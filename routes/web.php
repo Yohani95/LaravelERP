@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CellarController;
+use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ActivoController;
+use App\Http\Controllers\SupplyController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +29,10 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('companies', CompanyController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('sub-categories', SubCategoryController::class);
+    Route::resource('cellars', CellarController::class);
+    Route::resource('supplies', SupplyController::class);
+    Route::resource('activos', ActivoController::class);
 });
