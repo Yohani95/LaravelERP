@@ -41,32 +41,43 @@
                                 <a class="dropdown-item" href="{{ route('cellars.index') }}">
                                     Bodegas
                                 </a>
-                                <a class="dropdown-item" href="{{ route('companies.index') }}">
+                                <a class="dropdown-item" href="{{ route('employees.index') }}">
                                     Empleados
                                 </a>
-                                
+                                <a class="dropdown-item" href="{{ route('clients.index') }}">
+                                    Clientes
+                                </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                Iventario
+                                Finanzas
                             </a>
     
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('categories.index') }}">
-                                    Categorias
+                                <a class="dropdown-item" href="{{ route('ingress.index') }}">
+                                    Ingresos
                                 </a>
-                                <a class="dropdown-item" href="{{ route('sub-categories.index') }}">
-                                    Sub-Categorias
+                                <a class="dropdown-item" href="{{ route('egress.index') }}">
+                                    Egresos
                                 </a>
-                                <a class="dropdown-item" href="{{ route('products.index') }}">
-                                    Productos
+                                <a class="dropdown-item" href="{{ route('categories-finances.index') }}">
+                                    Categoria
                                 </a>
-                                <a class="dropdown-item" href="{{ route('supplies.index') }}">
-                                    Insumos
+                            </div>
+                            
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                DTEs
+                            </a>
+    
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('cafs.index') }}">
+                                    CAFS
                                 </a>
-                                <a class="dropdown-item" href="{{ route('activos.index') }}">
-                                    Activos
+                                <a class="dropdown-item" href="{{ route('certificados-digitales.index') }}">
+                                    Certificado Digital
                                 </a>
                             </div>
                             

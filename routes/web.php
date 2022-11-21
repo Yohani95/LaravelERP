@@ -8,6 +8,17 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ActivoController;
 use App\Http\Controllers\SupplyController;
+use App\Http\Controllers\CategoriesFinanceController;
+use App\Http\Controllers\CertificadosDigitaleController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\EgressController;
+use App\Http\Controllers\IngressController;
+use App\Http\Controllers\JobPositionController;
+use App\Http\Controllers\PaymentMethodsController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TypesPrintController;
+use App\Http\Controllers\CafController;
+use App\Http\Controllers\EmployeeController;
 
 
 /*
@@ -35,4 +46,16 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('cellars', CellarController::class);
     Route::resource('supplies', SupplyController::class);
     Route::resource('activos', ActivoController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('cafs', CafController::class);
+    Route::resource('categories-finances', CategoriesFinanceController::class);
+    Route::resource('certificados-digitales', CertificadosDigitaleController::class);
+    Route::resource('contacts', ContactController::class);
+    Route::resource('employees', EmployeeController::class);
+    Route::resource('egress', EgressController::class);
+    Route::resource('ingress', IngressController::class);
+    Route::resource('job-positions', JobPositionController::class);
+    Route::resource('payment-methods', PaymentMethodClientController::class);
+    Route::resource('settings', SettingController::class);
+    Route::resource('settings', TypesPrintController::class);
 });
