@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Egress;
+use App\Models\CategoriesFinance;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +33,8 @@ class EgressController extends Controller
     public function create()
     {
         $egress = new Egress();
-        return view('egress.create', compact('egress'));
+        $categories=CategoriesFinance::pluck('name','id');
+        return view('egress.create', compact('egress','categories'));
     }
 
     /**
@@ -73,8 +75,8 @@ class EgressController extends Controller
     public function edit($id)
     {
         $egress = Egress::find($id);
-
-        return view('egress.edit', compact('egress'));
+        $categories=CategoriesFinance::pluck('name','id');
+        return view('egress.edit', compact('egress','categories'));
     }
 
     /**

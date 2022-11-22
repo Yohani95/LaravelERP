@@ -18,14 +18,10 @@
         </div>
         <div class="form-group">
             {{ Form::label('categories_id') }}
-            {{ Form::text('categories_id', $egress->categories_id, ['class' => 'form-control' . ($errors->has('categories_id') ? ' is-invalid' : ''), 'placeholder' => 'Categories Id']) }}
+            {{ Form::select('categories_id',$categories ,$egress->categories_id, ['class' => 'form-control' . ($errors->has('categories_id') ? ' is-invalid' : ''), 'placeholder' => 'Categories Id']) }}
             {!! $errors->first('categories_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('user_id') }}
-            {{ Form::text('user_id', $egress->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
-            {!! $errors->first('user_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
 
     </div>
     <div class="box-footer mt20">

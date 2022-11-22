@@ -53,8 +53,8 @@
 											<td>{{ $ingress->name }}</td>
 											<td>{{ $ingress->mount }}</td>
 											<td>{{ $ingress->description }}</td>
-											<td>{{ $ingress->categories_id }}</td>
-											<td>{{ $ingress->user_id }}</td>
+											<td>{{ $ingress->categoriesFinance->name }}</td>
+											<td>{{ $ingress->user->name }}</td>
 
                                             <td>
                                                 <form action="{{ route('ingresses.destroy',$ingress->id) }}" method="POST">

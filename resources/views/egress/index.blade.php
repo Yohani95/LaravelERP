@@ -53,8 +53,8 @@
 											<td>{{ $egress->name }}</td>
 											<td>{{ $egress->mount }}</td>
 											<td>{{ $egress->description }}</td>
-											<td>{{ $egress->categories_id }}</td>
-											<td>{{ $egress->user_id }}</td>
+											<td>{{ $egress->categoriesFinance->name }}</td>
+											<td>{{ $egress->user->name}}</td>
 
                                             <td>
                                                 <form action="{{ route('egresses.destroy',$egress->id) }}" method="POST">

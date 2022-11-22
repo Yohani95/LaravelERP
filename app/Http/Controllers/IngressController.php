@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ingress;
 use Illuminate\Http\Request;
+use App\Models\CategoriesFinance;
 
 /**
  * Class IngressController
@@ -32,7 +33,8 @@ class IngressController extends Controller
     public function create()
     {
         $ingress = new Ingress();
-        return view('ingress.create', compact('ingress'));
+        $categories=CategoriesFinance::pluck('name','id');
+        return view('ingress.create', compact('ingress','categories'));
     }
 
     /**
@@ -73,8 +75,8 @@ class IngressController extends Controller
     public function edit($id)
     {
         $ingress = Ingress::find($id);
-
-        return view('ingress.edit', compact('ingress'));
+        $categories=CategoriesFinance::pluck('name','id');
+        return view('ingress.edit', compact('ingress','categories'));
     }
 
     /**
