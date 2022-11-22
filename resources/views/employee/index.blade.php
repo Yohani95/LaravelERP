@@ -59,8 +59,8 @@
 											<td>{{ $employee->direcction }}</td>
 											<td>{{ $employee->email }}</td>
 											<td>{{ $employee->phone }}</td>
-											<td>{{ $employee->user_id }}</td>
-											<td>{{ $employee->job_position_id }}</td>
+											<td>{{ $employee->user->name }}</td>
+											<td>{{ $employee->jobPosition->name }}</td>
 
                                             <td>
                                                 <form action="{{ route('employees.destroy',$employee->id) }}" method="POST">

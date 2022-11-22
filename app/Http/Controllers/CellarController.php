@@ -47,7 +47,7 @@ class CellarController extends Controller
         request()->validate(Cellar::$rules);
         $cellar = Cellar::create($request->all());
         return redirect()->route('cellars.index')
-            ->with('success', 'Cellar created successfully.');
+            ->with('success', 'Bodega Creado Correctamente.');
     }
 
     /**
@@ -90,7 +90,7 @@ class CellarController extends Controller
         $cellar->update($request->all());
 
         return redirect()->route('cellars.index')
-            ->with('success', 'Cellar updated successfully');
+            ->with('success', 'Bodega Actualizado Correctamente');
     }
 
     /**

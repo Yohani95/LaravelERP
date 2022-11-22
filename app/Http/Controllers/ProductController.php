@@ -79,7 +79,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $subcategory=SubCategory::pluck('name','id');
         $cellar=Cellar::pluck('name','id');
-        return view('product.create', compact('product','subcategory','cellar'));
+        return view('product.edit', compact('product','subcategory','cellar'));
     }
 
     /**

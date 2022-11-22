@@ -44,6 +44,9 @@
                                 <a class="dropdown-item" href="{{ route('employees.index') }}">
                                     Empleados
                                 </a>
+                                <a class="dropdown-item" href="{{ route('job-positions.index') }}">
+                                    Cargos
+                                </a>
                                 <a class="dropdown-item" href="{{ route('clients.index') }}">
                                     Clientes
                                 </a>

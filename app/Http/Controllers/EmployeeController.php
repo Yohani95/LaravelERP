@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\JobPosition;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +33,8 @@ class EmployeeController extends Controller
     public function create()
     {
         $employee = new Employee();
-        return view('employee.create', compact('employee'));
+        $job =JobPosition::pluck('name','id');
+        return view('employee.create', compact('employee','job'));
     }
 
     /**
@@ -73,8 +75,8 @@ class EmployeeController extends Controller
     public function edit($id)
     {
         $employee = Employee::find($id);
-
-        return view('employee.edit', compact('employee'));
+        $job =JobPosition::pluck('name','id');
+        return view('employee.edit', compact('employee','job'));
     }
 
     /**

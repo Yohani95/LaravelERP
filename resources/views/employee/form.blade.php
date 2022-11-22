@@ -32,16 +32,11 @@
             {!! $errors->first('phone', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('user_id') }}
-            {{ Form::text('user_id', $employee->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
-            {!! $errors->first('user_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
             {{ Form::label('job_position_id') }}
-            {{ Form::text('job_position_id', $employee->job_position_id, ['class' => 'form-control' . ($errors->has('job_position_id') ? ' is-invalid' : ''), 'placeholder' => 'Job Position Id']) }}
+            {{ Form::select('job_position_id',$job ,$employee->job_position_id, ['class' => 'form-control' . ($errors->has('job_position_id') ? ' is-invalid' : ''), 'placeholder' => 'Job Position Id']) }}
             {!! $errors->first('job_position_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
+        <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Submit</button>
