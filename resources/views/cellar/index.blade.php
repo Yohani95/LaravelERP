@@ -48,7 +48,7 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $cellar->name }}</td>
-											<td>{{ $cellar->user_id }}</td>
+											<td>{{ $cellar->user->name }}</td>
 
                                             <td>
                                                 <form action="{{ route('cellars.destroy',$cellar->id) }}" method="POST">

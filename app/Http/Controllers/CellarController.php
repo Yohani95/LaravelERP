@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cellar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class CellarController
@@ -44,9 +45,7 @@ class CellarController extends Controller
     public function store(Request $request)
     {
         request()->validate(Cellar::$rules);
-
         $cellar = Cellar::create($request->all());
-
         return redirect()->route('cellars.index')
             ->with('success', 'Cellar created successfully.');
     }

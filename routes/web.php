@@ -52,8 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('certificados-digitales', CertificadosDigitaleController::class);
     Route::resource('contacts', ContactController::class);
     Route::resource('employees', EmployeeController::class);
-    Route::resource('egress', EgressController::class);
-    Route::resource('ingress', IngressController::class);
+    Route::resource('egresses', EgressController::class);
+    Route::resource('ingresses', IngressController::class);
     Route::resource('job-positions', JobPositionController::class);
     Route::resource('payment-methods', PaymentMethodClientController::class);
     Route::resource('settings', SettingController::class);

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Activo;
 use Illuminate\Http\Request;
-
+use App\Models\Cellar;
+use App\Models\SubCategory;
 /**
  * Class ActivoController
  * @package App\Http\Controllers
@@ -32,7 +33,9 @@ class ActivoController extends Controller
     public function create()
     {
         $activo = new Activo();
-        return view('activo.create', compact('activo'));
+        $subcategory=SubCategory::pluck('name','id');
+        $cellar=Cellar::pluck('name','id');
+        return view('activo.create', compact('activo','subcategory','cellar'));
     }
 
     /**
@@ -74,7 +77,9 @@ class ActivoController extends Controller
     {
         $activo = Activo::find($id);
 
-        return view('activo.edit', compact('activo'));
+        $subcategory=SubCategory::pluck('name','id');
+        $cellar=Cellar::pluck('name','id');
+        return view('activo.create', compact('activo','subcategory','cellar'));
     }
 
     /**

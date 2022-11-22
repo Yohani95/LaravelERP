@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,8 @@ class SubCategoryController extends Controller
     public function create()
     {
         $subCategory = new SubCategory();
-        return view('sub-category.create', compact('subCategory'));
+        $category=Category::pluck('name','id');
+        return view('sub-category.create', compact('subCategory','category'));
     }
 
     /**
@@ -73,8 +75,8 @@ class SubCategoryController extends Controller
     public function edit($id)
     {
         $subCategory = SubCategory::find($id);
-
-        return view('sub-category.edit', compact('subCategory'));
+        $category=Category::pluck('name','id');
+        return view('sub-category.edit', compact('subCategory','category'));
     }
 
     /**

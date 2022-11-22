@@ -28,12 +28,12 @@
         </div>
         <div class="form-group">
             {{ Form::label('cellar_id') }}
-            {{ Form::text('cellar_id', $product->cellar_id, ['class' => 'form-control' . ($errors->has('cellar_id') ? ' is-invalid' : ''), 'placeholder' => 'Cellar Id']) }}
+            {{ Form::select('cellar_id',$cellar ,$product->cellar_id, ['class' => 'form-control' . ($errors->has('cellar_id') ? ' is-invalid' : ''), 'placeholder' => 'Cellar Id']) }}
             {!! $errors->first('cellar_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('sub_category_id') }}
-            {{ Form::text('sub_category_id', $product->sub_category_id, ['class' => 'form-control' . ($errors->has('sub_category_id') ? ' is-invalid' : ''), 'placeholder' => 'Sub Category Id']) }}
+            {{ Form::Select('sub_category_id',$subcategory ,$product->sub_category_id, ['class' => 'form-control' . ($errors->has('sub_category_id') ? ' is-invalid' : ''), 'placeholder' => 'Sub Category Id']) }}
             {!! $errors->first('sub_category_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

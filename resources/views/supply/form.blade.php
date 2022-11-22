@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('sub_category_id') }}
-            {{ Form::text('sub_category_id', $supply->sub_category_id, ['class' => 'form-control' . ($errors->has('sub_category_id') ? ' is-invalid' : ''), 'placeholder' => 'Sub Category Id']) }}
+            {{ Form::select('sub_category_id',$subcategory ,$supply->sub_category_id, ['class' => 'form-control' . ($errors->has('sub_category_id') ? ' is-invalid' : ''), 'placeholder' => 'Sub Category Id']) }}
             {!! $errors->first('sub_category_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

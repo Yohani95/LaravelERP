@@ -51,14 +51,39 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Inventario
+                            </a>
+    
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('products.index') }}">
+                                    Productos
+                                </a>
+                                <a class="dropdown-item" href="{{ route('activos.index') }}">
+                                    Activos
+                                </a>
+                                <a class="dropdown-item" href="{{ route('supplies.index') }}">
+                                    Insumos
+                                </a>
+                                <a class="dropdown-item" href="{{ route('categories.index') }}">
+                                    Categorias
+                                </a>
+                                <a class="dropdown-item" href="{{ route('sub-categories.index') }}">
+                                    Sub Categorias
+                                </a>
+                                
+                            </div>
+                            
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 Finanzas
                             </a>
     
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('ingress.index') }}">
+                                <a class="dropdown-item" href="{{ route('ingresses.index') }}">
                                     Ingresos
                                 </a>
-                                <a class="dropdown-item" href="{{ route('egress.index') }}">
+                                <a class="dropdown-item" href="{{ route('egresses.index') }}">
                                     Egresos
                                 </a>
                                 <a class="dropdown-item" href="{{ route('categories-finances.index') }}">
@@ -105,7 +130,6 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

@@ -57,8 +57,8 @@
 											<td>{{ $activo->count }}</td>
 											<td>{{ $activo->price }}</td>
 											<td>{{ $activo->user_id }}</td>
-											<td>{{ $activo->cellar_id }}</td>
-											<td>{{ $activo->sub_category_id }}</td>
+											<td>{{ $activo->cellar->name}}</td>
+											<td>{{ $activo->subCategory->name }}</td>
 
                                             <td>
                                                 <form action="{{ route('activos.destroy',$activo->id) }}" method="POST">

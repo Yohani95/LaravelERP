@@ -55,8 +55,8 @@
 											<td>{{ $supply->code }}</td>
 											<td>{{ $supply->count }}</td>
 											<td>{{ $supply->price }}</td>
-											<td>{{ $supply->user_id }}</td>
-											<td>{{ $supply->sub_category_id }}</td>
+											<td>{{ $supply->user->name }}</td>
+											<td>{{ $supply->subCategory->name }}</td>
 
                                             <td>
                                                 <form action="{{ route('supplies.destroy',$supply->id) }}" method="POST">

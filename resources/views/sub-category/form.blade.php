@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('categories_id') }}
-            {{ Form::text('categories_id', $subCategory->categories_id, ['class' => 'form-control' . ($errors->has('categories_id') ? ' is-invalid' : ''), 'placeholder' => 'Categories Id']) }}
+            {{ Form::select('categories_id',$category ,$subCategory->categories_id, ['class' => 'form-control' . ($errors->has('categories_id') ? ' is-invalid' : ''), 'placeholder' => 'Categories Id']) }}
             {!! $errors->first('categories_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

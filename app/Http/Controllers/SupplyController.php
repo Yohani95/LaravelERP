@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Supply;
 use Illuminate\Http\Request;
+use App\Models\SubCategory;
 
 /**
  * Class SupplyController
@@ -32,7 +33,8 @@ class SupplyController extends Controller
     public function create()
     {
         $supply = new Supply();
-        return view('supply.create', compact('supply'));
+        $subcategory=SubCategory::pluck('name','id');
+        return view('supply.create', compact('supply','subcategory'));
     }
 
     /**
@@ -73,8 +75,8 @@ class SupplyController extends Controller
     public function edit($id)
     {
         $supply = Supply::find($id);
-
-        return view('supply.edit', compact('supply'));
+        $subcategory=SubCategory::pluck('name','id');
+        return view('supply.edit', compact('supply','subcategory'));
     }
 
     /**

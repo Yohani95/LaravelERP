@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Cellar;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 /**
@@ -32,7 +34,9 @@ class ProductController extends Controller
     public function create()
     {
         $product = new Product();
-        return view('product.create', compact('product'));
+        $subcategory=SubCategory::pluck('name','id');
+        $cellar=Cellar::pluck('name','id');
+        return view('product.create', compact('product','subcategory','cellar'));
     }
 
     /**
@@ -73,8 +77,9 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-
-        return view('product.edit', compact('product'));
+        $subcategory=SubCategory::pluck('name','id');
+        $cellar=Cellar::pluck('name','id');
+        return view('product.create', compact('product','subcategory','cellar'));
     }
 
     /**
