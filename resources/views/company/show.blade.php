@@ -11,17 +11,17 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Company</span>
+                            <span class="card-title">Información de la Empresa</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('companies.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('companies.index') }}">Volver</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Razon Social:</strong>
+                            <strong>Razón Social:</strong>
                             {{ $company->razon_social }}
                         </div>
                         <div class="form-group">
@@ -37,15 +37,15 @@
                             {{ $company->comuna }}
                         </div>
                         <div class="form-group">
-                            <strong>Direccion:</strong>
+                            <strong>Dirección:</strong>
                             {{ $company->direccion }}
                         </div>
                         <div class="form-group">
-                            <strong>Telefono:</strong>
+                            <strong>Teléfono:</strong>
                             {{ $company->telefono }}
                         </div>
                         <div class="form-group">
-                            <strong>Pagina Web:</strong>
+                            <strong>Página Web:</strong>
                             {{ $company->pagina_web }}
                         </div>
                         <div class="form-group">
@@ -57,11 +57,11 @@
                             {{ $company->ruta_logo }}
                         </div>
                         <div class="form-group">
-                            <strong>Fecha Resolucion:</strong>
+                            <strong>Fecha Resolución:</strong>
                             {{ $company->fecha_resolucion }}
                         </div>
                         <div class="form-group">
-                            <strong>Numero Resolucion:</strong>
+                            <strong>Numero Resolución:</strong>
                             {{ $company->numero_resolucion }}
                         </div>
 
