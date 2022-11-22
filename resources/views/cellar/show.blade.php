@@ -11,24 +11,23 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Cellar</span>
-                        </div>
+                            <span class="card-title">Información de la Bodega</span>
+                        </div>   
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('cellars.index') }}"> Back</a>
-                        </div>
+                        <a class="btn btn-primary m-2" href="{{ route('cellars.index') }}"> Volver</a>
+                        </div>                     
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $cellar->name }}
                         </div>
                         <div class="form-group">
-                            <strong>User Id:</strong>
-                            {{ $cellar->user_id }}
-                        </div>
-
+                            <strong>Nombre de Usuario:</strong>
+                            {{ $cellar->user -> name }}
+                        </div>                        
                     </div>
                 </div>
             </div>
