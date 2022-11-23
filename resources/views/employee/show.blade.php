@@ -11,29 +11,29 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Employee</span>
+                            <span class="card-title">Información del Empleado</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('employees.index') }}"> Back</a>
+                            <a class="btn btn-primary m-2" href="{{ route('employees.index') }}"> Volver</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $employee->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Lastname:</strong>
+                            <strong>Apellido:</strong>
                             {{ $employee->lastname }}
                         </div>
                         <div class="form-group">
-                            <strong>Rut:</strong>
+                            <strong>RUT:</strong>
                             {{ $employee->rut }}
                         </div>
                         <div class="form-group">
-                            <strong>Direcction:</strong>
+                            <strong>Dirección:</strong>
                             {{ $employee->direcction }}
                         </div>
                         <div class="form-group">
@@ -41,16 +41,16 @@
                             {{ $employee->email }}
                         </div>
                         <div class="form-group">
-                            <strong>Phone:</strong>
+                            <strong>Teléfono:</strong>
                             {{ $employee->phone }}
                         </div>
                         <div class="form-group">
-                            <strong>User Id:</strong>
-                            {{ $employee->user_id }}
+                            <strong>Nombre del Usuario:</strong>
+                            {{ $employee->user -> name }}
                         </div>
                         <div class="form-group">
-                            <strong>Job Position Id:</strong>
-                            {{ $employee->job_position_id }}
+                            <strong>Cargo:</strong>
+                            {{ $employee->jobPosition->name }}
                         </div>
 
                     </div>
