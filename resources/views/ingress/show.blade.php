@@ -11,34 +11,34 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Ingress</span>
+                            <span class="card-title">Información del Ingreso</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('ingresses.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('ingresses.index') }}"> Volver</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $ingress->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Mount:</strong>
+                            <strong>Monto:</strong>
                             {{ $ingress->mount }}
                         </div>
                         <div class="form-group">
-                            <strong>Description:</strong>
+                            <strong>Descripción:</strong>
                             {{ $ingress->description }}
                         </div>
                         <div class="form-group">
-                            <strong>Categories Id:</strong>
-                            {{ $ingress->categories_id }}
+                            <strong>Categoría:</strong>
+                            {{ $ingress->categories->name }}
                         </div>
                         <div class="form-group">
-                            <strong>User Id:</strong>
-                            {{ $ingress->user_id }}
+                            <strong>Nombre de Usuario:</strong>
+                            {{ $ingress->user->name }}
                         </div>
 
                     </div>
