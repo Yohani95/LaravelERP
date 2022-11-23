@@ -11,34 +11,34 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Egress</span>
+                            <span class="card-title">Información del Egreso</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('egresses.index') }}"> Back</a>
+                            <a class="btn btn-primary m-2" href="{{ route('egresses.index') }}"> Volver</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Etiqueta de Egreso:</strong>
                             {{ $egress->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Mount:</strong>
+                            <strong>Monto Asociado:</strong>
                             {{ $egress->mount }}
                         </div>
                         <div class="form-group">
-                            <strong>Description:</strong>
+                            <strong>Detalle del Egreso:</strong>
                             {{ $egress->description }}
                         </div>
                         <div class="form-group">
-                            <strong>Categories Id:</strong>
-                            {{ $egress->categories_id }}
+                            <strong>Categoría Asociada:</strong>
+                            {{ $egress->categoriesFinance->name }}
                         </div>
                         <div class="form-group">
-                            <strong>User Id:</strong>
-                            {{ $egress->user_id }}
+                            <strong>Nombre del Usuario:</strong>
+                            {{ $egress->user->name }}
                         </div>
 
                     </div>

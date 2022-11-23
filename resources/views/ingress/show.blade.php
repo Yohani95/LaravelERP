@@ -14,7 +14,7 @@
                             <span class="card-title">Información del Ingreso</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('ingresses.index') }}"> Volver</a>
+                            <a class="btn btn-primary m-2" href="{{ route('ingresses.index') }}"> Volver</a>
                         </div>
                     </div>
 
@@ -34,7 +34,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Categoría:</strong>
-                            {{ $ingress->categories->name }}
+                            {{ $ingress->categoriesFinance->name}}
                         </div>
                         <div class="form-group">
                             <strong>Nombre de Usuario:</strong>

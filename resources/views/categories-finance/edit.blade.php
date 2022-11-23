@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update Categories Finance</span>
+                        <span class="card-title">Actualizar Categoría Financiera</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('categories-finances.update', $categoriesFinance->id) }}"  role="form" enctype="multipart/form-data">
