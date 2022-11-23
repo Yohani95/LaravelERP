@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Activo') }}
+                                {{ __('Lista de Activos') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('activos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Añadir Activo') }}
                                 </a>
                               </div>
                         </div>
@@ -34,15 +34,15 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>N°</th>
                                         
-										<th>Name</th>
-										<th>Code</th>
-										<th>Count</th>
-										<th>Price</th>
-										<th>User Id</th>
-										<th>Cellar Id</th>
-										<th>Sub Category Id</th>
+										<th>Nombre</th>
+										<th>Código</th>
+										<th>Cantidad</th>
+										<th>Precio</th>
+										<th>Usuario</th>
+										<th>Bodega</th>
+										<th>Categoría</th>
 
                                         <th></th>
                                     </tr>
@@ -62,11 +62,11 @@
 
                                             <td>
                                                 <form action="{{ route('activos.destroy',$activo->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('activos.show',$activo->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('activos.edit',$activo->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('activos.show',$activo->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('activos.edit',$activo->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>

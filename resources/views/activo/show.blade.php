@@ -11,42 +11,42 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Activo</span>
+                            <span class="card-title">Información del Activo</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('activos.index') }}"> Back</a>
+                            <a class="btn btn-primary m-2" href="{{ route('activos.index') }}"> Volver</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre del Activo:</strong>
                             {{ $activo->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Code:</strong>
+                            <strong>Código del Activo:</strong>
                             {{ $activo->code }}
                         </div>
                         <div class="form-group">
-                            <strong>Count:</strong>
+                            <strong>Cantidad Disponible:</strong>
                             {{ $activo->count }}
                         </div>
                         <div class="form-group">
-                            <strong>Price:</strong>
+                            <strong>Precio Unitario:</strong>
                             {{ $activo->price }}
                         </div>
                         <div class="form-group">
-                            <strong>User Id:</strong>
-                            {{ $activo->user_id }}
+                            <strong>Nombre del Usuario:</strong>
+                            {{ $activo->user->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Cellar Id:</strong>
-                            {{ $activo->cellar_id }}
+                            <strong>Bodega del Activo:</strong>
+                            {{ $activo->cellar->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Sub Category Id:</strong>
-                            {{ $activo->sub_category_id }}
+                            <strong>Categoría Asociada:</strong>
+                            {{ $activo->subCategory->name }}
                         </div>
 
                     </div>

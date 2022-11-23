@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Activo</span>
+                        <span class="card-title">Añadir Activo</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('activos.store') }}"  role="form" enctype="multipart/form-data">
