@@ -19,6 +19,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TypesPrintController;
 use App\Http\Controllers\CafController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -58,4 +59,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('payment-methods', PaymentMethodClientController::class);
     Route::resource('settings', SettingController::class);
     Route::resource('settings', TypesPrintController::class);
+    Route::resource('users', UserController::class);
+    Route::get('user/profile',function(){return view('user.my-profile');} )->name('user.profile');
 });

@@ -1,18 +1,19 @@
 @extends('layouts.app')
+
 @section('template_title')
-    Create Company
+    Create User
 @endsection
 
 @section('content')
 <div class="pagetitle">
-    <h1>Crear Empresa</h1>
+    <h1>Crear Usuario de sistema</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('companies.index')}}">Empresa</a></li>
-        <li class="breadcrumb-item">Crear</li>
-    </ol>
+        <li class="breadcrumb-item"><a href="{{route('users.index')}}">Inicio</a></li>
+        <li class="breadcrumb-item active">Crear</li>
+      </ol>
     </nav>
-  </div>
+</div>
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -21,13 +22,13 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Ingresar Empresa</span>
+                        <span class="card-title">Create User</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('companies.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('users.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
-                           
-                            @include('company.form')
+
+                            @include('user.form')
 
                         </form>
                     </div>

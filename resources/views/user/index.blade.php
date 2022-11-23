@@ -1,18 +1,19 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Company
+    User
 @endsection
 
 @section('content')
 <div class="pagetitle">
-    <h1>Empresa</h1>
+    <h1>Usuarios de sistema</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('home')}}">Inicio</a></li>
+        <li class="breadcrumb-item active">Usuario</li>
       </ol>
     </nav>
-  </div>
+</div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -21,12 +22,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Listado de Compañías') }}
+                                {{ __('User') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('companies.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Compañía') }}
+                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Create New') }}
                                 </a>
                               </div>
                         </div>
@@ -44,45 +45,27 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Razón Social</th>
-										<th>Rut Empresa</th>
-										<th>Giro</th>
-										<th>Comuna</th>
-										<th>Dirección</th>
-										<th>Teléfono</th>
-										<th>Página Web</th>
+										<th>Name</th>
 										<th>Email</th>
-										<th>Logo</th>
-										<th>Fecha Resolución</th>
-										<th>N° Resolución</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($companies as $company)
+                                    @foreach ($users as $user)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $company->razon_social }}</td>
-											<td>{{ $company->rut_empresa }}</td>
-											<td>{{ $company->giro }}</td>
-											<td>{{ $company->comuna }}</td>
-											<td>{{ $company->direccion }}</td>
-											<td>{{ $company->telefono }}</td>
-											<td>{{ $company->pagina_web }}</td>
-											<td>{{ $company->email }}</td>
-											<td>{{ $company->ruta_logo }}</td>
-											<td>{{ $company->fecha_resolucion }}</td>
-											<td>{{ $company->numero_resolucion }}</td>
+											<td>{{ $user->name }}</td>
+											<td>{{ $user->email }}</td>
 
                                             <td>
-                                                <form action="{{ route('companies.destroy',$company->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary mb-2" href="{{ route('companies.show',$company->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="btn btn-sm btn-success mb-2" href="{{ route('companies.edit',$company->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm mb-2"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -92,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $companies->links() !!}
+                {!! $users->links() !!}
             </div>
         </div>
     </div>

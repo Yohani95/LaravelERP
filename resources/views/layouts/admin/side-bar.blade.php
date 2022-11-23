@@ -20,16 +20,18 @@
             </a>
           </li>
           <a class="dropdown-item" href="{{ route('cellars.index') }}">
+            <i class="bi bi-circle"></i>
             Bodegas
         </a>
         <a class="dropdown-item" href="{{ route('employees.index') }}">
-            Empleados
+          <i class="bi bi-circle"></i>Empleados
         </a>
         <a class="dropdown-item" href="{{ route('job-positions.index') }}">
-            Cargos
+          <i class="bi bi-circle"></i> Cargos
         </a>
+        <li>
         <a class="dropdown-item" href="{{ route('clients.index') }}">
-            Clientes
+          <i class="bi bi-circle"></i> Clientes
         </a>
         </ul>
       </li>
@@ -40,13 +42,13 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <a class="dropdown-item" href="{{ route('ingresses.index') }}">
-            Ingresos
+            <i class="bi bi-circle"></i> Ingresos
         </a>
         <a class="dropdown-item" href="{{ route('egresses.index') }}">
-            Egresos
+          <i class="bi bi-circle"></i>Egresos
         </a>
         <a class="dropdown-item" href="{{ route('categories-finances.index') }}">
-            Categoria
+             <i class="bi bi-circle"></i>Categoria
         </a>
         </ul>
       </li>
@@ -89,12 +91,23 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="{{route('user.profile')}}">
           <i class="bi bi-person"></i>
-          <span>Profile</span>
+          <span>Mi Perfil</span>
         </a>
       </li><!-- End Profile Page Nav -->
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('users.index')}}">
+          <i class="bi  bi-people-fill"></i>
+          <span>Usuarios</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('users.index')}}">
+          <i class="bi  bi-person-badge"></i>
+          <span>Roles</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-faq.html">
           <i class="bi bi-question-circle"></i>
