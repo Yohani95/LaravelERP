@@ -11,38 +11,38 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Supply</span>
+                            <span class="card-title">Información del Insumo</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('supplies.index') }}"> Back</a>
+                            <a class="btn btn-primary m-2" href="{{ route('supplies.index') }}"> Volver</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre del Insumo:</strong>
                             {{ $supply->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Code:</strong>
+                            <strong>Código del Insumo:</strong>
                             {{ $supply->code }}
                         </div>
                         <div class="form-group">
-                            <strong>Count:</strong>
+                            <strong>Cántidad Disponible:</strong>
                             {{ $supply->count }}
                         </div>
                         <div class="form-group">
-                            <strong>Price:</strong>
+                            <strong>Precio Unitario:</strong>
                             {{ $supply->price }}
                         </div>
                         <div class="form-group">
-                            <strong>User Id:</strong>
-                            {{ $supply->user_id }}
+                            <strong>Nombre del Usuario:</strong>
+                            {{ $supply->user->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Sub Category Id:</strong>
-                            {{ $supply->sub_category_id }}
+                            <strong>Categoría Asociada:</strong>
+                            {{ $supply->subCategory->name }}
                         </div>
 
                     </div>
