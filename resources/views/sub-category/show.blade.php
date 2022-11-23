@@ -11,21 +11,21 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Sub Category</span>
+                            <span class="card-title">Información de la Sub Categoría</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('sub-categories.index') }}"> Back</a>
+                            <a class="btn btn-primary m-2" href="{{ route('sub-categories.index') }}"> volver</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre de la Sub_Categoría:</strong>
                             {{ $subCategory->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Categories Id:</strong>
+                            <strong>Categoría Asociada:</strong>
                             {{ $subCategory->categories_id }}
                         </div>
 
