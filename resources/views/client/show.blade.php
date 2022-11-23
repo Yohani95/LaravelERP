@@ -11,21 +11,21 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Client</span>
+                            <span class="card-title">Información del Cliente </span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('clients.index') }}"> Back</a>
+                            <a class="btn btn-primary m-2" href="{{ route('clients.index') }}"> Volver</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $client->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Lastname:</strong>
+                            <strong>Apellido:</strong>
                             {{ $client->lastname }}
                         </div>
                         <div class="form-group">
@@ -33,7 +33,7 @@
                             {{ $client->rut }}
                         </div>
                         <div class="form-group">
-                            <strong>Direcction:</strong>
+                            <strong>Dirección:</strong>
                             {{ $client->direcction }}
                         </div>
                         <div class="form-group">
@@ -41,12 +41,12 @@
                             {{ $client->email }}
                         </div>
                         <div class="form-group">
-                            <strong>Phone:</strong>
+                            <strong>Teléfono:</strong>
                             {{ $client->phone }}
                         </div>
                         <div class="form-group">
-                            <strong>User Id:</strong>
-                            {{ $client->user_id }}
+                            <strong>Nombre del Usuario:</strong>
+                            {{ $client->user -> name }}
                         </div>
 
                     </div>

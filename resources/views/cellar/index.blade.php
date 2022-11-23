@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('cellars.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Bodega') }}
+                                  {{ __('Añadir Bodega') }}
                                 </a>
                               </div>
                         </div>
@@ -34,10 +34,10 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>N°</th>
                                         
 										<th>Nombre</th>
-										<th>Nombre Usuario</th>
+										<th>Nombre de Usuario</th>
 
                                         <th></th>
                                     </tr>

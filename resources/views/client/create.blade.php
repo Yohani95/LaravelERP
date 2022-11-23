@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create Client</span>
+                        <span class="card-title">Añadir Cliente</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('clients.store') }}"  role="form" enctype="multipart/form-data">

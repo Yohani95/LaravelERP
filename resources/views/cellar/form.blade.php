@@ -3,7 +3,7 @@
         
         <div class="form-group">
             {{ Form::label('nombre') }}
-            {{ Form::text('name', $cellar->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+            {{ Form::text('name', $cellar->name, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Nombre de la bodega']) }}
             {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
