@@ -58,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('job-positions', JobPositionController::class);
     Route::resource('payment-methods', PaymentMethodClientController::class);
     Route::resource('settings', SettingController::class);
-    Route::resource('settings', TypesPrintController::class);
+    Route::resource('types-prints', TypesPrintController::class);
     Route::resource('users', UserController::class);
     Route::get('user/profile',function(){return view('user.my-profile');} )->name('user.profile');
 });

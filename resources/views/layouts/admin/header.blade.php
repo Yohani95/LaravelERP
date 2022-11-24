@@ -50,7 +50,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{route('user.profile')}}">
+              <a class="dropdown-item d-flex align-items-center" href="{{route('types-prints.index')}}">
                 <i class="bi bi-gear"></i>
                 <span>Configuración de Cuenta</span>
               </a>
