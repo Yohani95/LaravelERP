@@ -6,11 +6,11 @@
 
 @section('content')
 <div class="pagetitle">
-    <h1>Crear Usuario de sistema</h1>
+    <h1>Ingresar Usuario de sistema</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('users.index')}}">Inicio</a></li>
-        <li class="breadcrumb-item active">Crear</li>
+        <li class="breadcrumb-item"><a href="{{route('users.index')}}">Home</a></li>
+        <li class="breadcrumb-item active">Añadir Usuario</li>
       </ol>
     </nav>
 </div>
@@ -22,7 +22,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Create User</span>
+                        <span class="card-title">Añadir Usuario </span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('users.store') }}"  role="form" enctype="multipart/form-data">
