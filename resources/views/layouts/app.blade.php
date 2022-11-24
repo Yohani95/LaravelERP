@@ -31,7 +31,7 @@
 @auth
 <body class="">
 @else
-<body class="toggle-sidebar">
+<body class="toggle-sidebar #footer">
 @endauth
 @endif
     @include('layouts.admin.header')
@@ -40,7 +40,10 @@
             @yield('content')
         </main>
     </div>
-    @include('layouts.footer')
+    <div class="main-footer" >
+        @include('layouts.footer')
+    </div>
+        
     <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/vendor/chart.js/chart.min.js"></script>
