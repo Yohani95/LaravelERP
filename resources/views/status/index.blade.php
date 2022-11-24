@@ -1,19 +1,10 @@
 @extends('layouts.app')
 
 @section('template_title')
-    User
+    Status
 @endsection
 
 @section('content')
-<div class="pagetitle">
-    <h1>Usuarios de sistema</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('home')}}">Inicio</a></li>
-        <li class="breadcrumb-item active">Usuario</li>
-      </ol>
-    </nav>
-</div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -22,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Lista de Usuarios') }}
+                                {{ __('Status') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Añadir Usuario') }}
+                                <a href="{{ route('statuses.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Create New') }}
                                 </a>
                               </div>
                         </div>
@@ -43,29 +34,27 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>N°</th>
+                                        <th>No</th>
                                         
-										<th>Nombre</th>
-										<th>Email</th>
+										<th>Name</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($statuses as $status)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->email }}</td>
+											<td>{{ $status->name }}</td>
 
                                             <td>
-                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form action="{{ route('statuses.destroy',$status->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('statuses.show',$status->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('statuses.edit',$status->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -75,9 +64,8 @@
                         </div>
                     </div>
                 </div>
+                {!! $statuses->links() !!}
             </div>
         </div>
-        {!! $users->links() !!}
     </div>
-    
 @endsection

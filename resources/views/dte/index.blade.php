@@ -1,19 +1,10 @@
 @extends('layouts.app')
 
 @section('template_title')
-    User
+    Dte
 @endsection
 
 @section('content')
-<div class="pagetitle">
-    <h1>Usuarios de sistema</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('home')}}">Inicio</a></li>
-        <li class="breadcrumb-item active">Usuario</li>
-      </ol>
-    </nav>
-</div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -22,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Lista de Usuarios') }}
+                                {{ __('Dte') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Añadir Usuario') }}
+                                <a href="{{ route('dtes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Create New') }}
                                 </a>
                               </div>
                         </div>
@@ -43,29 +34,41 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>N°</th>
+                                        <th>No</th>
                                         
-										<th>Nombre</th>
-										<th>Email</th>
+										<th>Type Document</th>
+										<th>Num Folio</th>
+										<th>Track Id</th>
+										<th>Name Route Xml</th>
+										<th>Confirmed Send Sii</th>
+										<th>User Id</th>
+										<th>Status Id</th>
+										<th>Payment Status</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($dtes as $dte)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->email }}</td>
+											<td>{{ $dte->type_document }}</td>
+											<td>{{ $dte->num_folio }}</td>
+											<td>{{ $dte->track_id }}</td>
+											<td>{{ $dte->name_route_xml }}</td>
+											<td>{{ $dte->confirmed_send_sii }}</td>
+											<td>{{ $dte->user_id }}</td>
+											<td>{{ $dte->status_id }}</td>
+											<td>{{ $dte->payment_status }}</td>
 
                                             <td>
-                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form action="{{ route('dtes.destroy',$dte->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('dtes.show',$dte->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('dtes.edit',$dte->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -75,9 +78,8 @@
                         </div>
                     </div>
                 </div>
+                {!! $dtes->links() !!}
             </div>
         </div>
-        {!! $users->links() !!}
     </div>
-    
 @endsection

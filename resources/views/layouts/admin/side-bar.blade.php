@@ -8,7 +8,7 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
-      {{-- Venta --}}
+      {{-- Sales --}}
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#shop-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-shop"></i><span>Ventas</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -22,13 +22,39 @@
         <a class="dropdown-item" href="{{ route('employees.index') }}">
           <i class="bi bi-circle"></i>Orden de Pago
         </a>
-        <a class="dropdown-item" href="{{ route('job-positions.index') }}">
+        <a class="dropdown-item" href="{{ route('sales.index') }}">
           <i class="bi bi-circle"></i> Ventas Realizadas
         </a>
         <li>
-        <a class="dropdown-item" href="{{ route('clients.index') }}">
+        <a class="dropdown-item" href="{{ route('sold-products.index') }}">
           <i class="bi bi-circle"></i> Productos Vendidos
         </a>
+        </ul>
+      </li>
+      {{-- planification --}}
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#planification-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-easel"></i></i><span>Planificaciones</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="planification-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+          <li class="nav-item">
+            <a href="{{ route('companies.index') }}">
+              <i class="bi bi-circle active"></i><span>Orden de pedidos</span>
+            </a>
+          </li>
+        <a class="dropdown-item" href="{{ route('job-positions.index') }}">
+          <i class="bi bi-circle"></i> Planificar
+        </a>
+        <li>
+        <a class="dropdown-item" href="{{ route('clients.index') }}">
+          <i class="bi bi-circle"></i> Producción
+        </a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="{{ route('clients.index') }}">
+            <i class="bi bi-circle"></i> Despacho
+          </a>
+          </li>
         </ul>
       </li>
       {{-- admin --}}
@@ -78,6 +104,10 @@
         <a class="dropdown-item" href="{{ route('categories-finances.index') }}">
              <i class="bi bi-circle"></i>Categoria
         </a>
+        <a class="dropdown-item" href="{{ route('payment-methods.index') }}">
+          <i class="bi bi-circle"></i>Metodos de Pagos
+        </a>
+        
         </ul>
       </li>
       {{-- Dtes --}}
@@ -88,33 +118,33 @@
        </li>
         <ul id="dte-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li class="nav-item">
-          <a class="dropdown-item" href="{{ route('ingresses.index') }}">
+          <a class="dropdown-item" href="{{ route('dtes.index') }}">
             <i class="bi bi-circle"></i> Boletas
         </a>
         </li>
         <li class="nav-item">
-        <a class="dropdown-item" href="{{ route('egresses.index') }}">
+        <a class="dropdown-item" href="{{ route('dtes.index') }}">
           <i class="bi bi-circle"></i>Facturas
         </a>
         </li>
         <li class="nav-item">
-        <a class="dropdown-item" href="{{ route('categories-finances.index') }}">
+        <a class="dropdown-item" href="{{ route('dtes.index') }}">
              <i class="bi bi-circle"></i>Notas de Creditos
         </a>
          </li>
         <li class="nav-item">
-          <a class="dropdown-item" href="{{ route('categories-finances.index') }}">
+          <a class="dropdown-item" href="{{ route('certificados-digitales.index') }}">
             <i class="bi bi-circle"></i>Certificado Digital
          </a>
          </li>
         <li class="nav-item">
-          <a class="dropdown-item" href="{{ route('categories-finances.index') }}">
+          <a class="dropdown-item" href="{{ route('cafs.index') }}">
             <i class="bi bi-circle"></i>CAFs
          </a>
         </li>
          </ul>
       </li>
-      {{-- iventory --}}
+      {{-- inventory --}}
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#inventory-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-boxes"></i><span>Inventario</span><i class="bi bi-chevron-down ms-auto"></i>

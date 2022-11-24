@@ -1,19 +1,10 @@
 @extends('layouts.app')
 
 @section('template_title')
-    User
+    Sale
 @endsection
 
 @section('content')
-<div class="pagetitle">
-    <h1>Usuarios de sistema</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('home')}}">Inicio</a></li>
-        <li class="breadcrumb-item active">Usuario</li>
-      </ol>
-    </nav>
-</div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -22,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Lista de Usuarios') }}
+                                {{ __('Sale') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Añadir Usuario') }}
+                                <a href="{{ route('sales.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Create New') }}
                                 </a>
                               </div>
                         </div>
@@ -43,29 +34,47 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>N°</th>
+                                        <th>No</th>
                                         
-										<th>Nombre</th>
-										<th>Email</th>
+										<th>Description</th>
+										<th>Iva</th>
+										<th>Total</th>
+										<th>Neto</th>
+										<th>Num Folio</th>
+										<th>Type Document</th>
+										<th>Discount</th>
+										<th>Name Route Xml</th>
+										<th>Payment Date</th>
+										<th>User Id</th>
+										<th>Status Id</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($sales as $sale)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->email }}</td>
+											<td>{{ $sale->description }}</td>
+											<td>{{ $sale->iva }}</td>
+											<td>{{ $sale->total }}</td>
+											<td>{{ $sale->neto }}</td>
+											<td>{{ $sale->num_folio }}</td>
+											<td>{{ $sale->type_document }}</td>
+											<td>{{ $sale->discount }}</td>
+											<td>{{ $sale->name_route_xml }}</td>
+											<td>{{ $sale->payment_date }}</td>
+											<td>{{ $sale->user_id }}</td>
+											<td>{{ $sale->status_id }}</td>
 
                                             <td>
-                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form action="{{ route('sales.destroy',$sale->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('sales.show',$sale->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('sales.edit',$sale->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -75,9 +84,8 @@
                         </div>
                     </div>
                 </div>
+                {!! $sales->links() !!}
             </div>
         </div>
-        {!! $users->links() !!}
     </div>
-    
 @endsection

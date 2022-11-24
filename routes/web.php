@@ -14,12 +14,15 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EgressController;
 use App\Http\Controllers\IngressController;
 use App\Http\Controllers\JobPositionController;
-use App\Http\Controllers\PaymentMethodsController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TypesPrintController;
 use App\Http\Controllers\CafController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\DteController;
+use App\Http\Controllers\SoldProductController;
 
 
 /*
@@ -56,9 +59,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('egresses', EgressController::class);
     Route::resource('ingresses', IngressController::class);
     Route::resource('job-positions', JobPositionController::class);
-    Route::resource('payment-methods', PaymentMethodClientController::class);
+    Route::resource('payment-methods', PaymentMethodController::class);
     Route::resource('settings', SettingController::class);
     Route::resource('types-prints', TypesPrintController::class);
     Route::resource('users', UserController::class);
+    Route::resource('sales', SaleController::class);
+    Route::resource('dtes', DteController::class);
+    Route::resource('sold-products', SoldProductController::class);
     Route::get('user/profile',function(){return view('user.my-profile');} )->name('user.profile');
 });

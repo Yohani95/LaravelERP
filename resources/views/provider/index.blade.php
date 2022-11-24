@@ -1,19 +1,10 @@
 @extends('layouts.app')
 
 @section('template_title')
-    User
+    Provider
 @endsection
 
 @section('content')
-<div class="pagetitle">
-    <h1>Usuarios de sistema</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('home')}}">Inicio</a></li>
-        <li class="breadcrumb-item active">Usuario</li>
-      </ol>
-    </nav>
-</div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -22,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Lista de Usuarios') }}
+                                {{ __('Provider') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Añadir Usuario') }}
+                                <a href="{{ route('providers.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Create New') }}
                                 </a>
                               </div>
                         </div>
@@ -43,29 +34,41 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>N°</th>
+                                        <th>No</th>
                                         
-										<th>Nombre</th>
+										<th>Business Name</th>
+										<th>Rut</th>
+										<th>Direcction</th>
 										<th>Email</th>
+										<th>Phone</th>
+										<th>Giro</th>
+										<th>Comuna</th>
+										<th>Pag Web</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($providers as $provider)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $user->name }}</td>
-											<td>{{ $user->email }}</td>
+											<td>{{ $provider->business_name }}</td>
+											<td>{{ $provider->rut }}</td>
+											<td>{{ $provider->direcction }}</td>
+											<td>{{ $provider->email }}</td>
+											<td>{{ $provider->phone }}</td>
+											<td>{{ $provider->giro }}</td>
+											<td>{{ $provider->comuna }}</td>
+											<td>{{ $provider->pag_web }}</td>
 
                                             <td>
-                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Ver</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                <form action="{{ route('providers.destroy',$provider->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('providers.show',$provider->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('providers.edit',$provider->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -75,9 +78,8 @@
                         </div>
                     </div>
                 </div>
+                {!! $providers->links() !!}
             </div>
         </div>
-        {!! $users->links() !!}
     </div>
-    
 @endsection
