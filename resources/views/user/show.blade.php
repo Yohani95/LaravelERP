@@ -11,21 +11,21 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show User</span>
+                            <span class="card-title">Información del Usuario</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+                            <a class="btn btn-primary m-2" href="{{ route('users.index') }}"> Volver</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>Nombre de Usuario:</strong>
                             {{ $user->name }}
                         </div>
                         <div class="form-group">
-                            <strong>Email:</strong>
+                            <strong>Email de Usuario:</strong>
                             {{ $user->email }}
                         </div>
 
