@@ -27,7 +27,13 @@
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet">
 </head>
-<body>
+@if (Route::has('login'))
+@auth
+<body class="">
+@else
+<body class="toggle-sidebar">
+@endauth
+@endif
     @include('layouts.admin.header')
     <div class="">
         <main id="main" class="main">

@@ -4,6 +4,8 @@
       <a href="#" class="logo d-flex align-items-center">
         <span class="d-none d-lg-block">Digital Solutions Spa</span>
       </a>
+      @if (Route::has('login'))
+      @auth
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
@@ -18,8 +20,6 @@
 
 
         </li>
-        @if (Route::has('login'))
-        @auth
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <div class=" icon">
