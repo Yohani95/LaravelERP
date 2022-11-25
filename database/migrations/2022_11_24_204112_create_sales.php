@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('name_route_xml', 200)->nullable();
             $table->dateTime('payment_date')->nullable();
             $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('status_id')->references('id')->on('status');
+            $table->foreignId('status_id')->references('id')->on('statuses');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('name_route_xml', 300);
             $table->boolean('confirmed_send_sii')->nullable()->default(false);
             $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('status_id')->references('id')->on('status');
-            $table->foreignId('payment_status')->references('id')->on('status');
+            $table->foreignId('status_id')->references('id')->on('statuses');
+            $table->foreignId('payment_status')->references('id')->on('statuses');
             $table->timestamps();
         });
     }
