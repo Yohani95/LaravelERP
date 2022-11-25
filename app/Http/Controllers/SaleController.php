@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sale;
+use App\Models\Dte;
+use Illuminate\Support\Facades\DB;
+use App\Models\Caf;
+use App\Models\CertificadosDigitale;
+use App\Models\SoldProduct;
 use Illuminate\Http\Request;
 
 /**
@@ -43,12 +48,27 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Sale::$rules);
+        try {
+            DB::beginTransaction();
+            request()->validate(Sale::$rules);
+            $caf=Caf::all()->where('type_document',$request->type_document);
+            
+            $sale = Sale::create($request->all());
 
-        $sale = Sale::create($request->all());
+            
+            foreach ($variable as $key => $value) {
+                
+            }
 
-        return redirect()->route('sales.index')
-            ->with('success', 'Sale created successfully.');
+            $dte=new Dte();
+            $dte->user_id=Auth::id();
+            $dte->sale_id=sale::max('id');
+            DB::commit();
+            return redirect()->route('sales.index')
+                ->with('success', 'Venta Creada Correctamente.');
+        } catch (\Throwable $th) {
+            DB::rollback();
+        }
     }
 
     /**
@@ -91,7 +111,7 @@ class SaleController extends Controller
         $sale->update($request->all());
 
         return redirect()->route('sales.index')
-            ->with('success', 'Sale updated successfully');
+            ->with('success', 'Venta Actualiza Correctamente');
     }
 
     /**
@@ -104,6 +124,17 @@ class SaleController extends Controller
         $sale = Sale::find($id)->delete();
 
         return redirect()->route('sales.index')
-            ->with('success', 'Sale deleted successfully');
+            ->with('success', 'Venta Eliminada Correctamente');
     }
+    public function SalesServices(){
+        try {
+            $products=SoldProduct::all();
+            return view('sale.shop.index',compact('products'));
+        } catch (\Throwable $th) {
+            return view('error.error-500');
+        }
+    }
+
+
+   
 }

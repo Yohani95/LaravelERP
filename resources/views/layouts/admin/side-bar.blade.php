@@ -15,7 +15,7 @@
         </a>
         <ul id="shop-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li class="nav-item">
-            <a href="{{ route('companies.index') }}">
+            <a href="{{ route('sales.index') }}">
               <i class="bi bi-circle active"></i><span>Ventas</span>
             </a>
           </li>
@@ -83,7 +83,7 @@
           <i class="bi bi-circle"></i> Clientes
         </a>
          <li class="nav-item">
-          <a href="{{ route('companies.index') }}">
+          <a href="{{ route('providers.index') }}">
             <i class="bi bi-circle active"></i><span>Proveedores</span>
           </a>
          </li>
@@ -180,7 +180,7 @@
 <!-- End Components Nav -->
 
       {{-- *********** --}}
-      <li class="nav-heading">Pages</li>
+      <li class="nav-heading">Paginas</li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('user.profile')}}">
           <i class="bi bi-person"></i>

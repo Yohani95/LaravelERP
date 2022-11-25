@@ -23,8 +23,8 @@ use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\DteController;
 use App\Http\Controllers\SoldProductController;
-
-
+use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,7 +64,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('types-prints', TypesPrintController::class);
     Route::resource('users', UserController::class);
     Route::resource('sales', SaleController::class);
+    Route::get('sales/shop',[ SaleController::class ,'SalesServices'])->name('sale.shop');
     Route::resource('dtes', DteController::class);
+    Route::resource('providers', ProviderController::class);
     Route::resource('sold-products', SoldProductController::class);
     Route::get('user/profile',function(){return view('user.my-profile');} )->name('user.profile');
 });

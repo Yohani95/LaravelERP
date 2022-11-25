@@ -215,7 +215,7 @@
     data: {
         labels: ['Pelota','Arco','Flecha','Zapatilla'],
         datasets: [{
-            label: ['Ciudades Visitadas'],
+            label: ['Productos'],
             data:[3,2,4,5],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

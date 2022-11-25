@@ -30,15 +30,11 @@
             </span>
           <!-- End Profile Iamge Icon -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile text-center">
             <li class="dropdown-header text-center">
               <h6>{{ Auth::user()->name }}</h6>
               <span>Administrador</span>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
             <li>
               <a class="dropdown-item d-flex align-items-center" href="{{route('user.profile')}}">
                 <i class="bi bi-person"></i>
