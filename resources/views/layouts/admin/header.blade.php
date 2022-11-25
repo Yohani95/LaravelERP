@@ -11,29 +11,26 @@
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
             <i class="bi bi-search"></i>
           </a>
         </li>
-
-
-        </li>
         <li class="nav-item dropdown pe-3">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <div class=" icon">
-                <i class="ri-account-box-fill"></i>
-              </div>
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">
                 {{ Auth::user()->name }}
-            </span>
+            </span></a>
           <!-- End Profile Iamge Icon -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile text-center">
-            <li class="dropdown-header text-center">
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
               <h6>{{ Auth::user()->name }}</h6>
               <span>Administrador</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
             </li>
             <li>
               <a class="dropdown-item d-flex align-items-center" href="{{route('user.profile')}}">
@@ -58,7 +55,7 @@
             <li>
               <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
                 <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
+                <span>Necesitas Ayuda?</span>
               </a>
             </li>
             <li>
@@ -72,11 +69,11 @@
                 <span>Salir</span>
               </a>
             </li>
-        </form>
+            </form>
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
-      </ul>
+       </ul>
         @include('layouts.admin.side-bar')
       @endauth
       @endif

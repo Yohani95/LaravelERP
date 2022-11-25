@@ -102,10 +102,10 @@
           <i class="bi bi-circle"></i>Egresos
         </a>
         <a class="dropdown-item" href="{{ route('categories-finances.index') }}">
-             <i class="bi bi-circle"></i>Categoria
+             <i class="bi bi-circle"></i>Categoría
         </a>
         <a class="dropdown-item" href="{{ route('payment-methods.index') }}">
-          <i class="bi bi-circle"></i>Metodos de Pagos
+          <i class="bi bi-circle"></i>Métodos de Pagos
         </a>
         
         </ul>
@@ -167,12 +167,12 @@
           </li>
           <li>
             <a href="{{route('categories.index')}}">
-              <i class="bi bi-circle"></i><span>Categorias</span>
+              <i class="bi bi-circle"></i><span>Categorías</span>
             </a>
           </li>
           <li>
             <a href="{{route('sub-categories.index')}}">
-              <i class="bi bi-circle"></i><span>Sub-Categorias</span>
+              <i class="bi bi-circle"></i><span>Sub-Categorías</span>
             </a>
           </li>
         </ul>
