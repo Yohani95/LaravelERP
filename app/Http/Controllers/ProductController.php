@@ -47,12 +47,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Product::$rules);
-
-        $product = Product::create($request->all());
-
+        
+        try {
+            request()->validate(Product::$rules);
+            $product = Product::create($request->all());
         return redirect()->route('products.index')
-            ->with('success', 'Product created successfully.');
+            ->with('success', 'Producto creado Correctamente.');
+        } catch (\Throwable $th) {
+            return view('error.error-500')
+            ->with('success', 'Error al crear producto.');
+        }
     }
 
     /**
@@ -96,7 +100,7 @@ class ProductController extends Controller
         $product->update($request->all());
 
         return redirect()->route('products.index')
-            ->with('success', 'Product updated successfully');
+            ->with('success', 'Producto Editado Correctamente.');
     }
 
     /**
@@ -109,6 +113,6 @@ class ProductController extends Controller
         $product = Product::find($id)->delete();
 
         return redirect()->route('products.index')
-            ->with('success', 'Product deleted successfully');
+            ->with('success', 'Producto Eliminado Correctamente.');
     }
 }

@@ -31,7 +31,7 @@
             {{ Form::Select('sub_category_id',$subcategory ,$product->sub_category_id, ['class' => 'form-control' . ($errors->has('sub_category_id') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione la Categoría']) }}
             {!! $errors->first('sub_category_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-
+        <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary m-2">Aceptar</button>

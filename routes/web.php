@@ -25,6 +25,7 @@ use App\Http\Controllers\DteController;
 use App\Http\Controllers\SoldProductController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ShopController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,30 +44,44 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
+
+    // module admin 
+    Route::resource('cellars', CellarController::class);
     Route::resource('companies', CompanyController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('employees', EmployeeController::class);
+    Route::resource('contacts', ContactController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('job-positions', JobPositionController::class);
+
+    // module inventory 
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('sub-categories', SubCategoryController::class);
-    Route::resource('cellars', CellarController::class);
     Route::resource('supplies', SupplyController::class);
     Route::resource('activos', ActivoController::class);
-    Route::resource('clients', ClientController::class);
-    Route::resource('cafs', CafController::class);
+
+    // module finances 
     Route::resource('categories-finances', CategoriesFinanceController::class);
-    Route::resource('certificados-digitales', CertificadosDigitaleController::class);
-    Route::resource('contacts', ContactController::class);
-    Route::resource('employees', EmployeeController::class);
     Route::resource('egresses', EgressController::class);
     Route::resource('ingresses', IngressController::class);
-    Route::resource('job-positions', JobPositionController::class);
     Route::resource('payment-methods', PaymentMethodController::class);
+    
+    // module sales 
+    Route::resource('sales', SaleController::class);
+    Route::get('shop/index',[ ShopController::class ,'index'])->name('shop.index');
+    Route::resource('sold-products', SoldProductController::class);
+
+    // module settings 
     Route::resource('settings', SettingController::class);
     Route::resource('types-prints', TypesPrintController::class);
-    Route::resource('users', UserController::class);
-    Route::resource('sales', SaleController::class);
-    Route::get('sales/shop',[ SaleController::class ,'SalesServices'])->name('sale.shop');
+
+    // module DTE
+    Route::resource('cafs', CafController::class);
     Route::resource('dtes', DteController::class);
     Route::resource('providers', ProviderController::class);
-    Route::resource('sold-products', SoldProductController::class);
+    Route::resource('certificados-digitales', CertificadosDigitaleController::class);
+    
+    // module myprofile 
     Route::get('user/profile',function(){return view('user.my-profile');} )->name('user.profile');
 });

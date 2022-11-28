@@ -125,16 +125,6 @@ class SaleController extends Controller
 
         return redirect()->route('sales.index')
             ->with('success', 'Venta Eliminada Correctamente');
-    }
-    public function SalesServices(){
-        try {
-            $products=SoldProduct::all();
-            return view('sale.shop.index',compact('products'));
-        } catch (\Throwable $th) {
-            return view('error.error-500');
-        }
-    }
-
-
+    }   
    
 }

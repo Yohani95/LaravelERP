@@ -15,7 +15,7 @@
         </a>
         <ul id="shop-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li class="nav-item">
-            <a href="{{ route('sales.index') }}">
+            <a href="{{ route('shop.index') }}">
               <i class="bi bi-circle active"></i><span>Ventas</span>
             </a>
           </li>
