@@ -67,8 +67,7 @@
       </div>
 
       <div class="col-lg-6 mb-5 mb-lg-0">
-        <img src="assets/img/cta-bg.jpg" class="w-100 rounded-4 shadow-4"
-          alt="" />
+        <img src="assets/img/LogoDigitalSolutions.png" class="w-100 rounded-4 shadow-4 opacity=100" alt="" />
       </div>
     </div>
   </div>
