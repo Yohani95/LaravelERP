@@ -185,30 +185,36 @@
                 return; 
             }
             soldProduct.push(product)
+            console.log(soldProduct)
             addRow(product)
         }
         function updateTotal(monto){
             var total=document.getElementById('totalMonto')
             var iva =document.getElementById('iva')
             var neto =document.getElementById('montoNeto')
-            neto.value=(Number(total.value)+Number(monto))*0.81
-            iva.value=(Number(total.value)+Number(monto))*0.19
-            total.value=Number(total.value)+monto;
+            if(monto<0){
+                neto.value=((Number(total.value)+Number(monto))*0.81).toFixed(0)
+                iva.value=((Number(total.value)+monto)*0.19).toFixed(0)
+                total.value=Number(total.value)+Number(monto)
+            }else{
+                neto.value=((Number(total.value)+Number(monto))*0.81).toFixed(0)
+                iva.value=((Number(total.value)+Number(monto))*0.19).toFixed(0)
+                total.value=Number(total.value)+Number(monto)
+            }
+
         }
         function deleteRow(){
-            var table = $('#example').DataTable();
-            table.on('click', 'delt', function() {
+            var table = $('#table-index-sold').DataTable();
+            table.one('click', '.delt', function() {
                 let $tr = $(this).closest('tr');
+                var valor = $(this).closest('tr').find('td:eq(4)').text();
+                var code = $(this).closest('tr').find('td:eq(2)').text();
+                updateTotal(Number(-valor))
+                const solds=soldProduct.filter((item) => item.code !== code)
+                soldProduct=solds
                 // Le pedimos al DataTable que borre la fila
                 table.row($tr).remove().draw(false);
                 });
-
-            $('#table-index-sold-body').on( 'click', 'delt', function () {
-             table
-                .row( $(this).parents('tr') )
-                .remove()
-                .draw();
-                } );
         }
         function addRow(product){
             var t = $('#table-index-sold').DataTable();          
@@ -220,37 +226,65 @@
                     product.count,
                     product.price, 
                     product.sub_category.name,
-                    '<a type="button" id="delt" onclick="deleteRow()" class="badge bg-danger "><i class="fa fa-fw fa-trash"></i> Eliminar </a>',
+                    '<a type="button" onclick="deleteRow()" class="badge bg-danger delt"><i class="fa fa-fw fa-trash"></i> Eliminar </a>',
             ]).draw(false);
             updateTotal(product.price)
         }
-        function payProducts(){
+        async  function payProducts(){
             const btncompra = document.getElementById('buttonPay');
             btncompra.innerHTML='<span id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" ></span> Realizando Pago ...';
             btncompra.disabled = true; 
-            var response=100
+            var total=document.getElementById('totalMonto')
+            var response=await responsePay()
+            console.log(response)
             if(response==200){
                 new swal({
                         title : 'Exito',
                         type  : 'success',
                         text  : "Pago Realizado Correctamente.",
                         confirmButtonText: "Aceptar"
-                    },function(isConfirm){
-                        btncompra.disabled = false;
+                    }).then((value) => {
                         btncompra.innerHTML = "Realizar Pago";
+                        btncompra.disabled = false;
+                        window.location.href = "{{ route('shop.index')}}";
                     });
-            }else{
+                }else{
                 new swal({
                         title : 'Error',
                         type  : 'error',
                         text  : "Error al Realizar Pago, Contacte a Soporte Tecnico.",
                         confirmButtonText: "Aceptar"
-                    },function(isConfirm){
+                    }).then((value) => {
                         btncompra.innerHTML = "Realizar Pago";
                         btncompra.disabled = false;
+                        
                     });
             }
-           
+        }
+        function responsePay(){
+            try {
+                return new Promise(resolve=>{
+            let token = $("input[name=_token]").val()
+            $.ajax({
+            type: "POST",
+            headers: {
+            'X-CSRF-TOKEN': token
+                     },
+            url: {{route('sales.index')}},
+            data: soldProduct,
+            dataType: "text",
+            success: function(reponse){
+                if (reponse=='success'){
+                    resolve('200');
+                }else{
+                    resolve('500')
+                }
+            }
+            });
+            })
+            } catch (error) {
+                return '500'
+            }
         }
     </script>
 @endsection

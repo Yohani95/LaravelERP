@@ -68,6 +68,8 @@ class SaleController extends Controller
                 ->with('success', 'Venta Creada Correctamente.');
         } catch (\Throwable $th) {
             DB::rollback();
+            return redirect()->route('sales.index')
+                ->with('error', 'error.');
         }
     }
 
