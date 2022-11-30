@@ -124,15 +124,16 @@
             <div class="card">
             <div class="card-body">
               <h5 class="card-title">Datos de Venta <span>| </span></h5>
-                <form action="">
+                <form id="formulario" action="" method="POST">
+                    @csrf
               <ul class="list-group">
-                <li class="list-group-item" ><i class="bi bi-cash me-1 text-primary"></i>Monto Neto : <input id="montoNeto" class="" value="0" disabled style="border: 0" ></li>
-                <li class="list-group-item" ><i class="bi bi-collection me-1 text-primary"></i>Iva : <br> <input  id="iva" class="" value="0" disabled style="border: 0" ></li>
-                <li class="list-group-item" ><i class="bi bi-check-circle me-1 text-success"></i>Total : <br> <input id="totalMonto"  class="" value="0" disabled style="border: 0"></li>
-                <li class="list-group-item"><i class="bi bi-piggy-bank me-1 text-warning"></i>Descuentos : <input  class="" value="0" disabled style="border: 0"></li>
+                <li class="list-group-item" ><i class="bi bi-cash me-1 text-primary"></i>Monto Neto : <input type="text" id="montoNeto" name="montoNeto" class="form-control" value="0" disabled style="border: 0" ></li>
+                <li class="list-group-item" ><i class="bi bi-collection me-1 text-primary"></i>Iva : <br> <input type="text" id="iva" name="iva" class="form-control"value="0" disabled style="border: 0" ></li>
+                <li class="list-group-item" ><i class="bi bi-check-circle me-1 text-success"></i>Total : <br> <input type="text" id="totalMonto" name="totalMonto"  class="form-control" value="0" disabled style="border: 0"></li>
+                <li class="list-group-item"><i class="bi bi-piggy-bank me-1 text-warning"></i>Descuentos : <input type="text"  class="form-control" value="0" disabled style="border: 0"></li>
               </ul>
               <div class="d-grid gap-2 mt-3">
-                <select class="form-select" aria-label="Default select example" required>
+                <select id="doc" class="form-select" aria-label="Default select example" required>
                   <option selected="" value="">Seleccione tipo de documento</option>
                   <option value="39">Boleta Afecta</option>
                   <option value="41">Boleta Exenta</option>
@@ -141,7 +142,7 @@
                 </select>
               </div>
               <div class="d-grid gap-2 mt-3">
-                <select class="form-select" aria-label="Default select example" required>
+                <select id="payment" class="form-select" aria-label="Default select example" required>
                   <option selected="" value="">Seleccione Medio de pago</option>
                   <option value="1">Efectivo</option>
                   <option value="2">Transferencia</option>
@@ -162,8 +163,8 @@
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" herf="https://cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
- <script>
+    
+ <script> 
         var soldProduct=[];
         $(document).ready(function () {
             $('#table-index').DataTable({
@@ -184,7 +185,19 @@
             if(product.count<=0){
                 return; 
             }
-            soldProduct.push(product)
+            if(soldProduct.length != 0){
+                soldProduct.map((value, index, array) => {
+                   if(value.id==product.id){
+                    value.count=value.count+1
+                   }else{
+                    product.count=1
+                    soldProduct.push(product)
+                   }
+            })
+            }else{
+                product.count=1
+                soldProduct.push(product)
+            }
             console.log(soldProduct)
             addRow(product)
         }
@@ -236,7 +249,6 @@
             btncompra.disabled = true; 
             var total=document.getElementById('totalMonto')
             var response=await responsePay()
-            console.log(response)
             if(response==200){
                 new swal({
                         title : 'Exito',
@@ -263,19 +275,24 @@
         }
         function responsePay(){
             try {
-                return new Promise(resolve=>{
+            var total=document.getElementById('totalMonto').value
+            var iva =document.getElementById('iva').value
+            var neto =document.getElementById('montoNeto').value   
+            var doc=document.getElementById('doc').value
+            var method_pay=document.getElementById('payment').value
+            return new Promise(resolve=>{
             let token = $("input[name=_token]").val()
             $.ajax({
             type: "POST",
             headers: {
             'X-CSRF-TOKEN': token
                      },
-            url: {{route('sales.index')}},
-            data: soldProduct,
+            url: 'http://127.0.0.1:8000/shop/pay',
+            data: {method_pay,doc,iva,neto,total,soldProduct},
             dataType: "text",
-            success: function(reponse){
-                if (reponse=='success'){
-                    resolve('200');
+            success: function(data){
+                if ( data==200){
+                    resolve('200')
                 }else{
                     resolve('500')
                 }

@@ -52,14 +52,7 @@ class SaleController extends Controller
             DB::beginTransaction();
             request()->validate(Sale::$rules);
             $caf=Caf::all()->where('type_document',$request->type_document);
-            
-            $sale = Sale::create($request->all());
-
-            
-            foreach ($variable as $key => $value) {
-                
-            }
-
+            $sale = Sale::create($request->all());          
             $dte=new Dte();
             $dte->user_id=Auth::id();
             $dte->sale_id=sale::max('id');
