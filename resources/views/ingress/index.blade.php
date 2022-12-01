@@ -3,7 +3,9 @@
 @section('template_title')
     Ingress
 @endsection
-
+@section('css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+@endsection
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -31,7 +33,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table id="table-index" class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
                                         <th>N°</th>
@@ -72,8 +74,21 @@
                         </div>
                     </div>
                 </div>
-                {!! $ingresses->links() !!}
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#table-index').DataTable({
+                language: {
+                    url :'//cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json'
+                }
+            });
+        });
+        </script>
 @endsection

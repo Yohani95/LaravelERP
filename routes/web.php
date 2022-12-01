@@ -42,7 +42,9 @@ Route::get('/', function () {
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
-
+ // Error
+ Route::get('building', function () {
+     return view('error.building-page');})->name('building.page');
 Route::middleware(['auth'])->group(function () {
 
     // module admin 
@@ -82,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('dtes', DteController::class);
     Route::resource('providers', ProviderController::class);
     Route::resource('certificados-digitales', CertificadosDigitaleController::class);
-    
+
     // module myprofile 
     Route::get('user/profile',function(){return view('user.my-profile');} )->name('user.profile');
 });

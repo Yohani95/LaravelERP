@@ -19,7 +19,7 @@
               <i class="bi bi-circle active"></i><span>Ventas</span>
             </a>
           </li>
-        <a class="dropdown-item" href="{{ route('employees.index') }}">
+        <a class="dropdown-item" href="{{  route('building.page') }}">
           <i class="bi bi-circle"></i>Orden de Pago
         </a>
         <a class="dropdown-item" href="{{ route('sales.index') }}">
