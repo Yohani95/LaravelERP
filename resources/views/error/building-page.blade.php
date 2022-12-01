@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pages / Not Found 404 - NiceAdmin Bootstrap Template</title>
+  <title>Pages / Not Found 404</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -48,7 +48,7 @@
           <h2>Estamos Construyendo esta sección para Usted. <br> Pronto estara disponible gracias.</h2>    
         </div>
          <a class="btn" href="{{route('home')}}">Volver a Inicio</a>
-        <img src="assets/img/not-found.svg" class="img-fluid py-5" alt="Page Not Found">
+        <img src="assets/img/logodigital.jpg" class="img-fluid py-5" alt="Page Not Found">
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
           <!-- You can delete the links only if you purchased the pro version. -->
