@@ -42,16 +42,16 @@
               <i class="bi bi-circle active"></i><span>Orden de pedidos</span>
             </a>
           </li>
-        <a class="dropdown-item" href="{{ route('job-positions.index') }}">
+        <a class="dropdown-item" href="{{ route('building.page') }}">
           <i class="bi bi-circle"></i> Planificar
         </a>
         <li>
-        <a class="dropdown-item" href="{{ route('clients.index') }}">
+        <a class="dropdown-item" href="{{ route('building.page') }}">
           <i class="bi bi-circle"></i> Producción
         </a>
         </li>
         <li>
-          <a class="dropdown-item" href="{{ route('clients.index') }}">
+          <a class="dropdown-item" href="{{ route('building.page') }}">
             <i class="bi bi-circle"></i> Despacho
           </a>
           </li>
