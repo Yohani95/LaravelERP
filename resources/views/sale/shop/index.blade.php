@@ -186,20 +186,33 @@
                 return; 
             }
             if(soldProduct.length != 0){
+                var counter=0
+                var result=false
                 soldProduct.map((value, index, array) => {
-                   if(value.id==product.id){
-                    value.count=value.count+1
-                   }else{
+                    if(value.id==product.id){
+                        result= true;
+                        new swal({
+                        title : 'Información',
+                        type  : 'info',
+                        text  : "El Producto ya se encuentra en el Carrito. Aumente su cantidad dentro de el",
+                        confirmButtonText: "Aceptar"
+                    }).then((value) => {
+                    });
+                    }
+                })
+                console.log(result)
+                if(result==false){
                     product.count=1
+                    console.log("entro2")
                     soldProduct.push(product)
-                   }
-            })
+                    addRow(product)
+                }
             }else{
                 product.count=1
+                console.log("entro3")
                 soldProduct.push(product)
+                addRow(product)
             }
-            console.log(soldProduct)
-            addRow(product)
         }
         function updateTotal(monto){
             var total=document.getElementById('totalMonto')
@@ -219,10 +232,12 @@
         function deleteRow(){
             var table = $('#table-index-sold').DataTable();
             table.one('click', '.delt', function() {
+                var cell = table.cell( this );
                 let $tr = $(this).closest('tr');
-                var valor = $(this).closest('tr').find('td:eq(4)').text();
+                var price= $(this).closest('tr').find('td:eq(4)').text();
+                var quantity = $(this).closest('tr').find('input');
                 var code = $(this).closest('tr').find('td:eq(2)').text();
-                updateTotal(Number(-valor))
+                updateTotal(-(price*quantity.val()))
                 const solds=soldProduct.filter((item) => item.code !== code)
                 soldProduct=solds
                 // Le pedimos al DataTable que borre la fila
@@ -236,7 +251,7 @@
                     soldProduct.length,
                     product.name, 
                     product.code, 
-                    product.count,
+                    '<input type="number" name="" onChange="updateCell(this)"  class="form-control" value="1" style="border: 0">',
                     product.price, 
                     product.sub_category.name,
                     '<a type="button" onclick="deleteRow()" class="badge bg-danger delt"><i class="fa fa-fw fa-trash"></i> Eliminar </a>',
@@ -302,6 +317,26 @@
             } catch (error) {
                 return '500'
             }
+        }
+        function updateCell(quantity){
+            var table = $('#table-index-sold').DataTable();
+            table.one( 'click', 'td', function () {
+            var cell = table.cell( this );
+                if(quantity.value <=0){
+                    cell.data( cell.data()).draw();
+                }else{
+                    var code=$(this).closest('tr').find('td:eq(2)').text();
+                    soldProduct.map((value, index, array) => {
+                        if (value.code==code){
+                            updateTotal(-(value.count*value.price))
+                            value.count=quantity.value
+                            updateTotal((value.count*value.price))
+                        }
+                    })
+                    console.log(soldProduct)
+                }
+                // note - call draw() to update the table's draw state with the new data
+                } );
         }
     </script>
 @endsection

@@ -86,7 +86,6 @@
                         </div>
                     </div>
                 </div>
-                {!! $sales->links() !!}
             </div>
         </div>
     </div>
@@ -98,7 +97,11 @@
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#table-index').DataTable();
+            $('#table-index').DataTable({
+                language: {
+                    url :'//cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json'
+                }
+            });
         });
         </script>
 @endsection
