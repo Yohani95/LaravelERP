@@ -129,7 +129,7 @@
     <div class="col-sm-4 center text-center" style="max-width:600px; margin:auto;">
         <div class="card recent-sales overflow-auto">
          <div class="card-body">
-          <div class="card-title">Ganancias por Mes</div>
+          <div class="card-title card-header">Ganancias por Mes</div>
            <canvas id="months" width="400" height="400"></canvas>
          </div>
         </div>
@@ -137,7 +137,7 @@
     <div class="col-sm-4 center text-center" style="max-width:600px; margin:auto;">
         <div class="card recent-sales overflow-auto">
          <div class="card-body">
-            <div class="card-title">Productos mas Vendidos <span> | Este Mes</span></div>
+            <div class="card-title card-header">Productos mas Vendidos <span> | Este Mes</span></div>
            <canvas id="products" width="400" height="400"></canvas>
          </div>
         </div>
@@ -145,7 +145,7 @@
     <div class="col-sm-4 center text-center" style="max-width:600px; margin:auto;">
         <div class="card recent-sales overflow-auto">
          <div class="card-body">
-          <div class="card-title">Participación de productos<span> | Este Mes</span></div>
+          <div class="card-title card-header">Participación de productos<span> | Este Mes</span></div>
            <canvas id="productsSell" width="400" height="400"></canvas>
          </div>
         </div>
