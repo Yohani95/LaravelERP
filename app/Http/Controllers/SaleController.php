@@ -9,6 +9,9 @@ use App\Models\Caf;
 use App\Models\CertificadosDigitale;
 use App\Models\SoldProduct;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class SaleController
@@ -116,10 +119,29 @@ class SaleController extends Controller
      */
     public function destroy($id)
     {
-        $sale = Sale::find($id)->delete();
+        try {
+            Log::info("Entro a anular el pago [USER: ".Auth::id()."]");
+            DB::beginTransaction();
+            $sale = Sale::find($id)->delete();
+            $sold_product=SoldProduct::where('id',$id)->get();
+            Log::info($sold_product);
+            foreach ($sold_product as $key => $value) {
 
-        return redirect()->route('sales.index')
-            ->with('success', 'Venta Eliminada Correctamente');
+                $product=Product::where('code',$value->code)->first();
+                Log::info($product);
+                $product->count=$product->count+$value->quantity;
+                $product->save();
+            }
+            DB::commit();
+            Log::info("Salio de anular el pago [USER: ".Auth::id()."]");
+            return redirect()->route('sales.index')
+                ->with('success', 'Venta Anulada Correctamente');
+        } catch (\Throwable $th) {
+            DB::rollback();
+            Log::error("Error anular el pago [USER: ".Auth::id()."]");
+            Log::error($th);
+            return redirect()->route('building.page');
+        }
     }   
    
 }

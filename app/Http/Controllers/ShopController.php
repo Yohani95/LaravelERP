@@ -29,7 +29,6 @@ class ShopController extends Controller
         try {
             Log::info("Entro a Realizar el pago [USER: ".Auth::id()."]");
             DB::beginTransaction();
-            Log::info($request);
             //$caf=Caf::all()->where('type_document',$request->type_document);
             $sale = new Sale();
             $sale->total=$request->total;
