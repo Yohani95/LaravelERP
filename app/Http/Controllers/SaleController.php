@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\SalesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class SaleController
@@ -26,7 +28,7 @@ class SaleController extends Controller
      */
     public function index()
     {
-        $sales = Sale::paginate();
+        $sales = Sale::paginate(100);
 
         return view('sale.index', compact('sales'))
             ->with('i', (request()->input('page', 1) - 1) * $sales->perPage());
@@ -111,7 +113,14 @@ class SaleController extends Controller
         return redirect()->route('sales.index')
             ->with('success', 'Venta Actualiza Correctamente');
     }
-
+     /**
+     * download excel.
+     * @return \Illuminate\Http\Response
+     */
+    public function export() 
+    {
+        return Excel::download(new SalesExport, 'Sales.xlsx');
+    }
     /**
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
@@ -122,13 +131,14 @@ class SaleController extends Controller
         try {
             Log::info("Entro a anular el pago [USER: ".Auth::id()."]");
             DB::beginTransaction();
-            $sale = Sale::find($id)->delete();
+            $sale = Sale::find($id);
+            $sale->status_id=3;
+            $sale->update();
+            $sale->delete();
             $sold_product=SoldProduct::where('id',$id)->get();
             Log::info($sold_product);
             foreach ($sold_product as $key => $value) {
-
                 $product=Product::where('code',$value->code)->first();
-                Log::info($product);
                 $product->count=$product->count+$value->quantity;
                 $product->save();
             }
@@ -143,5 +153,4 @@ class SaleController extends Controller
             return redirect()->route('building.page');
         }
     }   
-   
 }

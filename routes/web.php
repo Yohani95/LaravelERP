@@ -70,6 +70,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('payment-methods', PaymentMethodController::class);
     
     // module sales 
+    Route::get('sales/export', [SaleController::class, 'export']);
     Route::resource('sales', SaleController::class);
     Route::get('shop/index',[ ShopController::class ,'index'])->name('shop.index');
     Route::post('shop/pay',[ ShopController::class ,'pay'])->name('shop.pay');

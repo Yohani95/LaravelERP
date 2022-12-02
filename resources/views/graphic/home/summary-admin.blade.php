@@ -38,7 +38,7 @@
                         <i class="bi bi-cart"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>145</h6>
+                        <h6>{{$totalDay[0]->total}}</h6>
                         <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Crecimiento</span>
   
                       </div>
@@ -73,7 +73,7 @@
                         <i class="bi bi-currency-dollar"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>$3,264</h6>
+                        <h6>{{$totalMonth[0]->total}}</h6>
                         <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">Crecimiento</span>
   
                       </div>
@@ -108,7 +108,7 @@
                         <i class="bi bi-card-checklist"></i>
                       </div>
                       <div class="ps-3">
-                        <h6>1244</h6>
+                        <h6>{{$dte}}</h6>
                         <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">Decrecimiento</span>
   
                       </div>
@@ -129,7 +129,7 @@
     <div class="col-sm-4 center text-center" style="max-width:600px; margin:auto;">
         <div class="card recent-sales overflow-auto">
          <div class="card-body">
-          <div class="card-header">Ganancias por Mes</div>
+          <div class="card-title">Ganancias por Mes</div>
            <canvas id="months" width="400" height="400"></canvas>
          </div>
         </div>
@@ -137,7 +137,7 @@
     <div class="col-sm-4 center text-center" style="max-width:600px; margin:auto;">
         <div class="card recent-sales overflow-auto">
          <div class="card-body">
-            <div class="card-header">Productos Vendidos</div>
+            <div class="card-title">Productos mas Vendidos <span> | Este Mes</span></div>
            <canvas id="products" width="400" height="400"></canvas>
          </div>
         </div>
@@ -145,7 +145,7 @@
     <div class="col-sm-4 center text-center" style="max-width:600px; margin:auto;">
         <div class="card recent-sales overflow-auto">
          <div class="card-body">
-          <div class="card-header">Participación de productos</div>
+          <div class="card-title">Participación de productos<span> | Este Mes</span></div>
            <canvas id="productsSell" width="400" height="400"></canvas>
          </div>
         </div>
@@ -160,35 +160,20 @@
     FillChartProducts()
     FillChartSell()
     function fillMonths(){
-    // var month
-    // console.log(month);
-    // var arrayCalculo=[];
-    // var arrayName=[];
-    //  for(item of month){
-    // arrayName.push(item.mes.trim());
-    //  arrayCalculo.push(Number(item.cantidad).toFixed(1));
-    //  }
-    var months = [
-    'Enero',
-    'Febrero',
-    'Marzo',
-    'Abril',
-    'Mayo',
-    'Junio',
-    'Julio',
-    'Agosto',
-    'Septiembre',
-    'Octubre',
-    'Noviembre',
-    'Diciembre'
-    ];
+    var sale=<?php echo json_encode($sale); ?>; 
+    var arrayCalculo=[];
+    var arrayName=[];
+     for(item of sale){
+    arrayName.push(item.mes);
+     arrayCalculo.push(Number(item.total).toFixed(1));
+     }
     const data = {
-    labels: months,
+    labels: arrayName,
     datasets: [{
       label: 'Ganancias según mes',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
-      data: [3,2,1,5,6,8,4,6,9,2,1,8],
+      data: arrayCalculo,
     }]
     };
 
@@ -203,20 +188,22 @@
     );
   }
   function FillChartProducts(){
-    // var arrayName=[];
-    // var arrayCalculo=[];
-    //  for(item of city){
-    // arrayName.push(item.city.trim());
-    //  arrayCalculo.push(Number(item.cantidad).toFixed(1));
-    //  }
+    var protuct=<?php echo json_encode($product); ?>; 
+    var arrayName=[];
+    var arrayCalculo=[];
+    console.log(protuct)
+     for(item of protuct){
+     arrayName.push(item.name.trim());
+     arrayCalculo.push(Number(item.quantity).toFixed(1));
+     }
      const ctx = document.getElementById('products');
     const myChartr = new Chart(ctx , {
     type: 'bar',
     data: {
-        labels: ['Pelota','Arco','Flecha','Zapatilla'],
+        labels: arrayName,
         datasets: [{
-            label: ['Productos'],
-            data:[3,2,4,5],
+            label: ['Productos vendidos '],
+            data:arrayCalculo,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -240,14 +227,21 @@
     });
   }
   function FillChartSell(){
+    var sold=<?php echo json_encode($soldParticipe); ?>; 
+    var arrayCalculo=[];
+    var arrayName=[];
+     for(item of sold){
+    arrayName.push(item.name);
+     arrayCalculo.push(Number(item.total).toFixed(1));
+     }
     const ctx = document.getElementById('productsSell');
     const myChart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ['Pelota','Arco','Flecha','Zapatilla'],
+        labels: arrayName,
         datasets: [{
             label: 'Participación',
-            data: [15,22,50,20],
+            data: arrayCalculo,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
