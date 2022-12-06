@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\SalesExport;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Mike42\Escpos\PrintConnectors\FilePrintConnector;
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\EscposImage;
 /**
  * Class SaleController
  * @package App\Http\Controllers
@@ -120,6 +122,18 @@ class SaleController extends Controller
     public function export() 
     {
         return Excel::download(new SalesExport, 'Sales.xlsx');
+    }
+    public function print(){
+        try {
+            $connector = new FilePrintConnector("php://stdout");
+            $printer = new Printer($connector);
+            $printer -> text("Hello World!\n");
+            $printer -> cut();
+            $printer -> close();
+            return json_encode(200);
+        } catch (\Throwable $th) {
+            return json_encode(500);
+        }
     }
     /**
      * @param int $id

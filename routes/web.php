@@ -72,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
     
     // module sales 
     Route::get('sales/export', [SaleController::class, 'export']);
+    Route::get('sales/print', [SaleController::class,'print']);
     Route::resource('sales', SaleController::class);
     Route::get('shop/index',[ ShopController::class ,'index'])->name('shop.index');
     Route::post('shop/pay',[ ShopController::class ,'pay'])->name('shop.pay');
