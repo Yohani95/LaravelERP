@@ -43,6 +43,7 @@ class HomeController extends Controller
         $sale=Sale::select(DB::raw("SUM(total) as total,MONTH(created_at) as mes"))
         ->groupBy('mes')->get();
         $soldParticipe=SoldProduct::whereMonth('created_at',Carbon::now()->month)
+        ->where('status_sale',false)
         ->select(DB::raw("SUM(unit_price*quantity) as total,name"))
         ->groupBy('code')
         ->groupBy('name')

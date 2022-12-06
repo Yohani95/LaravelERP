@@ -136,11 +136,13 @@ class SaleController extends Controller
             $sale->update();
             $sale->delete();
             $sold_product=SoldProduct::where('id',$id)->get();
-            Log::info($sold_product);
             foreach ($sold_product as $key => $value) {
                 $product=Product::where('code',$value->code)->first();
                 $product->count=$product->count+$value->quantity;
                 $product->save();
+                $sold=SoldProduct::find($value->id);
+                $sold->status_sale=1;
+                $sold->update();
             }
             DB::commit();
             Log::info("Salio de anular el pago [USER: ".Auth::id()."]");

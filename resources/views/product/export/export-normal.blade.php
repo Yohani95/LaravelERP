@@ -1,21 +1,19 @@
 <table id="" class="">
-    <thead class="thead">
+    <thead class="thead bolded">
         <tr>
-            <th>N°</th>
             
-            <th>Nombre</th>
-            <th>Código</th>
-            <th>Cantidad</th>
-            <th>Precio</th>
-            <th>Usuario</th>
-            <th>Bodega</th>
-            <th>Categoría</th>
+            <th><strong> Nombre</strong></th>
+            <th><strong>Código</strong></th>
+            <th><strong>Cantidad</strong></th>
+            <th><strong>Precio</strong></th>
+            <th><strong>Usuario</strong></th>
+            <th><strong>Bodega</strong></th>
+            <th><strong>Categoría</strong></th>
         </tr>
     </thead>
     <tbody>
         @foreach ($products as $product)
             <tr>
-                <td>{{ ++$i }}</td>
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->code }}</td>
                 <td>{{ $product->count }}</td>

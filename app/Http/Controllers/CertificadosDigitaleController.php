@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CertificadosDigitale;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class CertificadosDigitaleController
@@ -43,12 +44,28 @@ class CertificadosDigitaleController extends Controller
      */
     public function store(Request $request)
     {
+        try {
+            //code...
         request()->validate(CertificadosDigitale::$rules);
-
-        $certificadosDigitale = CertificadosDigitale::create($request->all());
-
+        $certificado=new CertificadosDigitale();
+        if($request->hasfile('ruta')){
+            $file=$request->file('ruta');
+            $destinationPath='dte/certificados/';
+            $filename=time().'-' . $file->getClientOriginalName();       
+            $file->move('certificado',$filename);
+        }
+        $certificado->name=$request->name;
+        $certificado->rut=$request->rut;
+        $certificado->password=$request->password;
+        $certificado->user_id=$request->user_id;
+        $certificado->ruta=$filename;
+        $certificado->save();
+        
         return redirect()->route('certificados-digitales.index')
-            ->with('success', 'CertificadosDigitale created successfully.');
+            ->with('success', 'Certificado Digital creado Correctamente.');
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     /**
@@ -87,11 +104,29 @@ class CertificadosDigitaleController extends Controller
     public function update(Request $request, CertificadosDigitale $certificadosDigitale)
     {
         request()->validate(CertificadosDigitale::$rules);
-
+        $certificado=new CertificadosDigitale();
+        if($request->hasfile('ruta')){
+            $file=$request->file('ruta');
+            $destinationPath='dte/certificados/';
+            $filename=time().'-' . $file->getClientOriginalName();       
+            $file->move('certificado',$filename);
+            $rutaDeArchivo = public_path('certificado/') . $certificado->ruta;
+            if (file_exists($rutaDeArchivo))
+            {
+                 // aquí la borro el archivo pfx
+                 unlink(public_path('certificado/').$certificado);
+            }
+        }
+        $certificado->name=$request->name;
+        $certificado->rut=$request->rut;
+        $certificado->password=$request->password;
+        $certificado->user_id=$request->user_id;
+        $certificado->ruta=$filename;
+        $certificado->save();
         $certificadosDigitale->update($request->all());
 
         return redirect()->route('certificados-digitales.index')
-            ->with('success', 'CertificadosDigitale updated successfully');
+            ->with('success', 'Certificado Digital actualizado Correctamente.');
     }
 
     /**
@@ -101,9 +136,19 @@ class CertificadosDigitaleController extends Controller
      */
     public function destroy($id)
     {
-        $certificadosDigitale = CertificadosDigitale::find($id)->delete();
-
-        return redirect()->route('certificados-digitales.index')
-            ->with('success', 'CertificadosDigitale deleted successfully');
+        try {
+            $certificadosDigitale = CertificadosDigitale::find($id);
+            $rutaDeArchivo = public_path('certificado/') . $certificadosDigitale->ruta;
+            if (file_exists($rutaDeArchivo))
+            {
+                 // aquí la borro el archivo pfx
+                 unlink(public_path('certificado/').$certificadosDigitale->ruta);
+                 $certificadosDigitale->delete();
+            }
+            return redirect()->route('certificados-digitales.index')
+                ->with('success', 'Certificado Digital eliminado Correctamente.');
+        } catch (\Throwable $th) {
+            return view('error.error-500');
+        }
     }
 }

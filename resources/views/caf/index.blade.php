@@ -16,9 +16,11 @@
 
                             <span id="card_title">
                                 {{ __('Caf') }}
-                            </span>
-
+                            </span>   
                              <div class="float-right">
+                                <a data-bs-toggle="modal" data-bs-target="#modalDownload" class="btn btn-outline-success btn-sm float-right"  data-placement="left">
+                                    Descargar CAF
+                                  </a>
                                 <a href="{{ route('cafs.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
@@ -82,12 +84,62 @@
                         </div>
                     </div>
                 </div>
-                {!! $cafs->links() !!}
             </div>
         </div>
     </div>
 @endsection
+@section('modal')
+<div  class="modal fade" id="modalDownload" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Descargar Caf</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="" method="post">
+                <div class="row">
+                <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Folio:</label>
+                <div class="col-sm-10">
+                  <select id="doc" class="form-select" aria-label="Default select example" required>
+                    <option selected="" value="">Seleccione tipo de documento</option>
+                    <option value="39">Boleta Afecta</option>
+                    <option value="41">Boleta Exenta</option>
+                    <option value="33">Factura Afecta</option>
+                    <option value="34">Factura Exenta</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">N°Folios:</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="number" name="" id="quantity_folio" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Ambiente:</label>
+                <div class="col-sm-10">
+                  <select id="doc" class="form-select" aria-label="Default select example" required>
+                    <option selected="" value="">Seleccione Ambiente</option>
+                    <option value="1">Producción</option>
+                    <option value="0">Certificación</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+         </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+          <button onclick="downloadCaf" type="button" class="btn btn-primary">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- End Basic Modal-->
+@endsection
 @section('js')
+
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
@@ -99,5 +151,29 @@
                 }
             });
         });
+        function downloadCaf(){
+            try {
+               var doc= document.getElementById('doc').value
+            return new Promise(resolve=>{
+            let token = $("input[name=_token]").val()
+            $.ajax({
+            type: "POST",
+            headers: {
+            'X-CSRF-TOKEN': token
+                     },
+            url: 'https://servicios.simpleapi.cl/api/folios/get/'+doc+'/'+$('#quantity_folio').val(),
+            data: {
+                
+            },
+            dataType: "text",
+            success: function(data){
+               
+            }
+            });
+            })
+            } catch (error) {
+                return '500'
+            }
+        }
         </script>
 @endsection

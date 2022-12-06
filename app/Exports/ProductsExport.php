@@ -4,12 +4,13 @@ namespace App\Exports;
 
 use App\Models\Product;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Illuminate\Contracts\View\View;
 
-class ProductsExport implements FromCollection,FromView,FromQuery,ShouldAutoSize
+class ProductsExport implements FromView,ShouldAutoSize
 {
     use Exportable;
     /**
@@ -22,11 +23,7 @@ class ProductsExport implements FromCollection,FromView,FromQuery,ShouldAutoSize
     public function view(): View
     {
         return view('product.export.export-normal', [
-            'product' => Product::all()
+            'products' => Product::all()
         ]);
-    }
-    public function query($filter)
-    {
-        return Product::query();
     }
 }

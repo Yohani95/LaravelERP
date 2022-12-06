@@ -12,15 +12,16 @@
             {!! $errors->first('rut', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
+            {{ Form::label('password') }}
+            {{ Form::text('password', $certificadosDigitale->password, ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => 'Contraseña']) }}
+            {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <div class="form-group m-2">
             {{ Form::label('ruta') }}
-            {{ Form::text('ruta', $certificadosDigitale->ruta, ['class' => 'form-control' . ($errors->has('ruta') ? ' is-invalid' : ''), 'placeholder' => 'Ruta']) }}
+            {{ Form::file('ruta', $certificadosDigitale->ruta, ['class' => 'form-control' . ($errors->has('ruta') ? ' is-invalid' : ''), 'placeholder' => 'Ruta','accept' => 'text/xml']) }}
             {!! $errors->first('ruta', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
-            {{ Form::label('user_id') }}
-            {{ Form::text('user_id', $certificadosDigitale->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
-            {!! $errors->first('user_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        <input type="hidden" value="{{auth()->user()->id}}" name="user_id">
 
     </div>
     <div class="box-footer mt20">

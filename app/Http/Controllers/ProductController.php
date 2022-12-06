@@ -6,7 +6,10 @@ use App\Models\Product;
 use App\Models\Cellar;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
-
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 /**
  * Class ProductController
  * @package App\Http\Controllers
@@ -114,5 +117,13 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')
             ->with('success', 'Producto Eliminado Correctamente.');
+    }
+    /**
+     * download excel.
+     * @return \Illuminate\Http\Response
+     */
+    public function export() 
+    {
+        return Excel::download(new ProductsExport, 'Productos.xlsx');
     }
 }

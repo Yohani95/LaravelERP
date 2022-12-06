@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('job-positions', JobPositionController::class);
 
     // module inventory 
+    Route::get('products/excel', [ProductController::class, 'export']);
     Route::resource('products', ProductController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('sub-categories', SubCategoryController::class);

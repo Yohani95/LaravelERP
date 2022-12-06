@@ -44,7 +44,7 @@
     <div class="main-footer" >
         @include('layouts.footer')
     </div>
-        
+    @yield('modal')
     <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/vendor/chart.js/chart.min.js"></script>

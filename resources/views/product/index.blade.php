@@ -19,11 +19,15 @@
                             </span>
 
                              <div class="float-right">
+                                <a href="{{url('products/excel')}}" class="btn btn-outline-success btn-sm float-right"  data-placement="left">
+                                    {{ __('Descargar Excel') }}
+                                  </a>
                                 <a href="{{ route('products.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Añadir Producto') }}
                                 </a>
                               </div>
                         </div>
+                        
                     </div>
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
