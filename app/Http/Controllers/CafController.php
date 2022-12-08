@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Caf;
 use Illuminate\Http\Request;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class CafController

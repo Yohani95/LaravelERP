@@ -48,7 +48,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('fecha_resolucion') }}
-            {{ Form::text('fecha_resolucion', $company->fecha_resolucion, ['class' => 'form-control' . ($errors->has('fecha_resolucion') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione una Fecha']) }}
+            {{ Form::date('fecha_resolucion', $company->fecha_resolucion, ['class' => 'form-control' . ($errors->has('fecha_resolucion') ? ' is-invalid' : ''), 'placeholder' => 'Seleccione una Fecha']) }}
             {!! $errors->first('fecha_resolucion', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

@@ -72,7 +72,7 @@ Route::middleware(['auth'])->group(function () {
     
     // module sales 
     Route::get('sales/export', [SaleController::class, 'export']);
-    Route::get('sales/print', [SaleController::class,'print']);
+    Route::get('shop/print', [SaleController::class,'print'])->name('print');
     Route::resource('sales', SaleController::class);
     Route::get('shop/index',[ ShopController::class ,'index'])->name('shop.index');
     Route::post('shop/pay',[ ShopController::class ,'pay'])->name('shop.pay');
@@ -83,6 +83,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('types-prints', TypesPrintController::class);
 
     // module DTE
+    Route::get('caf/file', [CertificadosDigitaleController::class, 'getCertificado'])->name('get.certificado');
     Route::resource('cafs', CafController::class);
     Route::resource('dtes', DteController::class);
     Route::resource('providers', ProviderController::class);
